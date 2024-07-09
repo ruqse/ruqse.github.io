@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Faruk Dube - Bioinformatician & Data Scientist</title>
+    <title>Faruk Dube - Bioinformatics Innovator</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #2ecc71;
-            --text-color: #34495e;
-            --background-color: #ecf0f1;
+            --primary-color: #1a237e;
+            --secondary-color: #4caf50;
+            --accent-color: #ff4081;
+            --text-color: #333;
+            --background-color: #f5f5f5;
         }
-        body {
-            font-family: 'Roboto', sans-serif;
+        body, html {
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             background-color: var(--background-color);
-            line-height: 1.6;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         .container {
             max-width: 1200px;
@@ -28,223 +28,320 @@
             padding: 0 20px;
         }
         header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-content {
             text-align: center;
-            padding: 100px 0;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            color: white;
+            z-index: 2;
         }
         header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        header p {
+            font-size: 1.5em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .dna-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 1;
+            background: url('path/to/dna-animation.gif') center/cover no-repeat;
         }
         nav {
-            background-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background-color: var(--primary-color);
         }
         nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
-        }
-        nav ul li {
+            padding: 0;
             margin: 0;
+            list-style-type: none;
         }
         nav ul li a {
-            color: white;
+            color: var(--primary-color);
             text-decoration: none;
-            padding: 15px 20px;
+            padding: 20px;
             display: block;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        nav.scrolled ul li a {
+            color: white;
         }
         nav ul li a:hover {
-            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
         section {
-            padding: 60px 0;
+            padding: 100px 0;
         }
-        .project-grid, .skill-grid {
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
-        .project-card, .skill-item {
+        .card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .card-content {
             padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .project-card:hover, .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .project-card img {
+        .card img {
             width: 100%;
-            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .skill-icon {
+            font-size: 3em;
+            color: var(--secondary-color);
             margin-bottom: 20px;
         }
         footer {
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 40px 0;
-            margin-top: 60px;
+            padding: 60px 0;
         }
         .social-links a {
             color: white;
-            font-size: 1.5em;
-            margin: 0 10px;
-            transition: color 0.3s;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: all 0.3s ease;
         }
         .social-links a:hover {
             color: var(--accent-color);
+            transform: translateY(-5px);
         }
         @media (max-width: 768px) {
-            header {
-                padding: 60px 0;
+            header h1 {
+                font-size: 3em;
             }
             nav ul {
                 flex-direction: column;
             }
-            nav ul li {
-                text-align: center;
+        }
+        .animate {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="dna-animation"></div>
+        <div class="header-content">
             <h1>Faruk Dube</h1>
-            <p>Data-savvy | Pipette and Keyboard Ninja</p> 
-  
+            <p>Decoding Life's Mysteries | Bioinformatics Innovator</p>
         </div>
     </header>
 
-    <nav>
+    <nav id="navbar">
         <ul>
-            <li><a href="#about">About Me</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-			<li><a href="#hobby-project">Hobby Projects</a></li>
+            <li><a href="#hobby-project">Hobby</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <main class="container">
+    <main>
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hi there! I'm a scientist with a PhD in Biomedical Science, and I enjoy using computers to solve biological puzzles. Right now, I'm working at SciLifeLab, where I'm diving into the fascinating world of women's health.
-My current project is all about understanding the tiny organisms that live in the vagina - yes, you read that right! These little critters play a big role in keeping women healthy. I'm using clever computer programs to figure out which combinations of these microbes are linked to good health, and which might cause problems.
-I'm also playing detective with these microbes' family trees. By looking at their genetic blueprints, I'm piecing together how they're related to each other and where they came from. It's like solving a million-year-old mystery!
-This work is super exciting because it could help us develop better ways to keep women healthy and treat problems when they pop up. Who knew such tiny organisms could be so important?</p>
+            <div class="container">
+                <h2>Unraveling Biological Enigmas</h2>
+                <p>Hi there! I'm a scientist with a PhD in Biomedical Science, and I love using computers to solve biological puzzles. Currently, I'm at SciLifeLab, diving into the fascinating world of women's health.</p>
+                <p>My current project? It's all about the tiny organisms living in the vagina. These little critters play a huge role in keeping women healthy. Using clever computer programs, I'm figuring out which combinations of these microbes are linked to good health, and which might cause problems.</p>
+                <p>I'm also playing detective with these microbes' family trees. By examining their genetic blueprints, I'm piecing together how they're related and where they came from. It's like solving a million-year-old mystery!</p>
+                <p>This exciting work could lead to better ways of keeping women healthy and treating problems. Who knew such tiny organisms could be so important?</p>
+            </div>
         </section>
+
         <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <i class="fas fa-dna fa-3x" style="color: var(--secondary-color);"></i>
-                    <h3>Genomics</h3>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-chart-bar fa-3x" style="color: var(--secondary-color);"></i>
-                    <h3>Data Analysis</h3>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-code fa-3x" style="color: var(--secondary-color);"></i>
-                    <h3>Programming (R, Python, Bash)</h3>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-brain fa-3x" style="color: var(--secondary-color);"></i>
-                    <h3>Machine Learning</h3>
+            <div class="container">
+                <h2>My Toolkit</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <i class="fas fa-dna skill-icon"></i>
+                            <h3>Genomics</h3>
+                            <p>Decoding the language of life, one base pair at a time.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <i class="fas fa-chart-bar skill-icon"></i>
+                            <h3>Data Analysis</h3>
+                            <p>Transforming raw data into meaningful insights.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <i class="fas fa-code skill-icon"></i>
+                            <h3>Programming</h3>
+                            <p>Fluent in R, Python, and Bash - the languages of data science.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <i class="fas fa-brain skill-icon"></i>
+                            <h3>Machine Learning</h3>
+                            <p>Teaching computers to find patterns in biological chaos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Recent Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="images/thumbs/parascaris_network.PNG" alt="Parascaris gene network">
-                    <h3>Gene co-expression network analysis in Parascaris univalens</h3>
-                    <p>Revealing core responsive genes in Parascaris univalens tissues following ivermectin exposure - 2024</p>
-                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298039" style="color: var(--secondary-color);">Full Article</a>
-                    <p><strong>Programming languages:</strong> Nextflow, Bash, R</p>
-                    <p><strong>Resource:</strong> Swedish HPC - UPPMAX</p>
-                    <p><strong>Scheduler:</strong> SLURM</p>
-                </div>
-                <div class="project-card">
-                    <img src="images/thumbs/elegans.PNG" alt="C. elegans">
-                    <h3>Transcriptomics of ivermectin response in C. elegans</h3>
-                    <p>Integrating abamectin quantitative trait loci and comparison to the Ivermectin-exposed DA1316 strain - 2023</p>
-                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285262" style="color: var(--secondary-color);">Full Article</a>
-                    <p><strong>Programming languages:</strong> Nextflow, Bash, R</p>
-                    <p><strong>Resource:</strong> Swedish HPC - UPPMAX</p>
-                    <p><strong>Scheduler:</strong> SLURM</p>
-                </div>
-                <div class="project-card">
-                    <img src="images/thumbs/single_worm.png" alt="Single worm">
-                    <h3>Ivermectin-induced gene expression changes</h3>
-                    <p>Comparative approach to study anthelminthic metabolism and resistance in vitro in adult Parascaris univalens and Caenorhabditis elegans - 2022</p>
-                    <a href="https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-022-05260-4" style="color: var(--secondary-color);">Full Article</a>
-                    <p><strong>Programming languages:</strong> Bash, R</p>
-                    <p><strong>Resource:</strong> Swedish HPC - UPPMAX</p>
-                    <p><strong>Scheduler:</strong> SLURM</p>
+            <div class="container">
+                <h2>Recent Discoveries</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="images/thumbs/parascaris_network.PNG" alt="Parascaris gene network">
+                        <div class="card-content">
+                            <h3>Gene Co-expression in <em>Parascaris univalens</em></h3>
+                            <p>Revealing core responsive genes following ivermectin exposure - 2024</p>
+                            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298039" target="_blank">Explore Findings</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/thumbs/elegans.PNG" alt="<em>C. elegans</em>">
+                        <div class="card-content">
+                            <h3>Ivermectin Response in <em>C. elegans</em></h3>
+                            <p>Integrating abamectin quantitative trait loci - 2023</p>
+                            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285262" target="_blank">Dive Deeper</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/thumbs/single_worm.png" alt="Single worm">
+                        <div class="card-content">
+                            <h3>Anthelminthic Resistance Study</h3>
+                            <p>Comparative approach in <em>Parascaris univalens</em> and <em>C. elegans</em> - 2022</p>
+                            <a href="https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-022-05260-4" target="_blank">Read More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-		<section id="hobby-project">
-            <h2>Hobby Projects</h2>
-            <div class="project-card">
-                <img src="images/phdplanner.png" alt="PhD Planner Screenshot">
-                <h3>PhD Planner</h3>
-                <p>A web application designed to help PhD students plan and manage their defences deadlines effectively.</p>
-                <a href="https://www.phdplanner.com" target="_blank" style="color: var(--secondary-color);">Check it out</a>
-                <p><strong>Technologies used:</strong> Django</p>
-                <p><strong>Key features:</strong>
-                    <ul>
-                        <li>Task management system</li>
-                        <li>Progress tracking</li>
-                        <li>Smart notifications</li>
-                    </ul>
-                </p>
+
+        <section id="hobby-project">
+            <div class="container">
+                <h2>Side Quest: PhD Planner</h2>
+                <div class="card">
+                    <img src="images/phdplanner.png" alt="PhD Planner Screenshot">
+                    <div class="card-content">
+                        <h3>PhD Planner</h3>
+                        <p>A web app designed to help PhD students manage their defense deadlines effectively.</p>
+                        <a href="https://www.phdplanner.com" target="_blank">Explore the Tool</a>
+                    </div>
+                </div>
             </div>
         </section>
+
         <section id="contact">
-            <h2>Get In Touch</h2>
-            <p>Email: farukmeddie@gmail.com</p>
-            <div class="social-links">
-                <a href="https://twitter.com/farukdube"><i class="fab fa-twitter"></i></a>
-                <a href="https://github.com/ruqse"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/farukdube"><i class="fab fa-linkedin"></i></a>
+            <div class="container">
+                <h2>Let's Connect</h2>
+                <p>Excited about science, coding, or just want to chat? Reach out!</p>
+                <p>Email: farukmeddie@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://twitter.com/farukdube" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/ruqse" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/farukdube" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Faruk Dube. All rights reserved.</p>
+            <p>&copy; 2024 Faruk Dube. Decoding life, one dataset at a time.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            const nav = document.querySelector('nav');
+            const nav = document.getElementById('navbar');
             const headerHeight = document.querySelector('header').offsetHeight;
 
             window.addEventListener('scroll', () => {
-                if (window.scrollY > headerHeight) {
-                    nav.style.backgroundColor = 'rgba(44, 62, 80, 0.9)';
+                if (window.scrollY > headerHeight - 100) {
+                    nav.classList.add('scrolled');
                 } else {
-                    nav.style.backgroundColor = 'var(--primary-color)';
+                    nav.classList.remove('scrolled');
                 }
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add animations on scroll
+            const animateOnScroll = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(animateOnScroll, {
+                root: null,
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
             });
         });
     </script>
