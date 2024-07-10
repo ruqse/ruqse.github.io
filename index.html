@@ -132,6 +132,29 @@
             color: var(--secondary-color);
             margin-bottom: 20px;
         }
+        #skills .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+        max-width: 800px;
+        margin: 0 auto;
+        }
+
+        #skills .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #skills .skill-icon {
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
         footer {
             margin-top: 40px;
             background-color: var(--primary-color);
