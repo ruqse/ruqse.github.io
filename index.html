@@ -97,18 +97,19 @@
         nav ul li a:hover {
             color: var(--secondary-color);
         }
+        
         #about .container {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+    
         .about-content {
             padding-left: 350px; /* Adjust this value based on your photo size */
             order: 2;
         }
-
+    
         .profile-photo {
             position: absolute;
             left: 20px;
@@ -123,7 +124,7 @@
             z-index: 1;
             order: 1;
         }
-
+    
         .profile-photo img {
             width: 200%;
             height: 200%;
@@ -131,28 +132,13 @@
             object-position: center 30%;
             transform: translate(-25%, -25%);
         }
-
+    
         .about-content p {
             text-align: justify;
             margin-bottom: 15px;
             order: 2;
         }
-
-        @media (max-width: 768px) {
-            .about-content {
-                padding-left: 0;
-            }
-
-            .profile-photo {
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
-                margin-bottom: 20px;
-                width: 250px;
-                height: 250px;
-                order: 1;
-            }
-        }
+    
         section {
             padding: 10px 0;
         }
@@ -198,7 +184,7 @@
         max-width: 800px;
         margin: 0 auto;
         }
-
+    
         #skills .card {
             height: 100%;
             display: flex;
@@ -208,18 +194,13 @@
             text-align: center;
             padding: 10px;
         }
-
+    
         #skills .skill-icon {
             font-size: 3em;
             color: var(--secondary-color);
             margin-bottom: 15px;
         }
-        @media (max-width: 600px) {
-        #skills .grid {
-            grid-template-columns: 1fr;
-        }
-        }
-
+    
         footer {
             margin-top: 40px;
             background-color: var(--primary-color);
@@ -237,14 +218,6 @@
             color: var(--secondary-color);
             transform: translateY(-5px);
         }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 3em;
-            }
-            nav ul {
-                flex-direction: column;
-            }
-        }
         .animate {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -258,67 +231,173 @@
                 transform: translateY(0);
             }
         }
-		#hobby-project .container {
+        #hobby-project .container {
         max-width: 1000px;
         margin: 0 auto;
-    }
-
-    #hobby-project .card {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    #hobby-project .card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-
-    #hobby-project .card-content {
-        padding: 30px;
-    }
-
-    #hobby-project .card-content h3 {
-        margin-top: 0;
-    }
-
-    #hobby-project .card-content a {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: var(--primary-color);
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-    #hobby-project .card-content a:hover {
-        background-color: var(--secondary-color);
-    }
-
-    @media (min-width: 768px) {
+        }
+    
         #hobby-project .card {
-            flex-direction: row;
-            align-items: stretch;
-            height: 400px;
-        }
-
-        #hobby-project .card img {
-            width: 50%;
-            height: auto;
-        }
-
-        #hobby-project .card-content {
-            width: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            height: auto;
+            max-width: 100%;
+            margin: 0 auto;
         }
-    }
+    
+        #hobby-project .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+    
+        #hobby-project .card-content {
+            padding: 30px;
+        }
+    
+        #hobby-project .card-content h3 {
+            margin-top: 0;
+        }
+    
+        #hobby-project .card-content a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        #hobby-project .card-content a:hover {
+            background-color: var(--secondary-color);
+        }
+    
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px;
+        }
+    
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin-bottom: 5px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+    
+        nav.scrolled .hamburger span {
+            background-color: white;
+        }
+    
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3em;
+            }
+    
+            nav .container {
+                display: flex;
+                justify-content: flex-end;
+            }
+    
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+    
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.95);
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            }
+    
+            nav ul.active {
+                display: flex;
+            }
+    
+            nav ul li {
+                margin: 15px 0;
+            }
+    
+            nav ul li a {
+                font-size: 1.2em;
+            }
+    
+            nav.scrolled ul {
+                background-color: var(--primary-color);
+            }
+    
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+    
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+    
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+    
+            .about-content {
+                padding-left: 0;
+            }
+    
+            .profile-photo {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 20px;
+                width: 250px;
+                height: 250px;
+                order: 1;
+            }
+    
+            #skills .grid {
+                grid-template-columns: 1fr;
+            }
+    
+            #hobby-project .card {
+                flex-direction: column;
+            }
+    
+            #hobby-project .card img,
+            #hobby-project .card-content {
+                width: 100%;
+            }
+        }
+    
+        @media (min-width: 769px) {
+            #hobby-project .card {
+                flex-direction: row;
+                align-items: stretch;
+                height: 400px;
+            }
+    
+            #hobby-project .card img {
+                width: 50%;
+                height: auto;
+            }
+    
+            #hobby-project .card-content {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
     </style>
 </head>
 <body>
@@ -331,13 +410,20 @@
     </header>
 
     <nav id="navbar">
-        <ul>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#hobby-project">Hobby projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="container">
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
+                <li><a href="#about">About me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#hobby-projects">Hobby projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -462,7 +548,9 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const nav = document.getElementById('navbar');
             const headerHeight = document.querySelector('header').offsetHeight;
-
+            const hamburger = document.getElementById('hamburger-menu');
+            const menu = document.querySelector('.menu');
+    
             window.addEventListener('scroll', () => {
                 if (window.scrollY > headerHeight - 100) {
                     nav.classList.add('scrolled');
@@ -470,7 +558,21 @@
                     nav.classList.remove('scrolled');
                 }
             });
-
+    
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                menu.classList.toggle('active');
+            });
+    
+            // Close menu when a link is clicked
+            document.querySelectorAll('.menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    menu.classList.remove('active');
+                });
+            });
+    
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -480,7 +582,7 @@
                     });
                 });
             });
-
+    
             // Add animations on scroll
             const animateOnScroll = (entries, observer) => {
                 entries.forEach(entry => {
@@ -489,12 +591,12 @@
                     }
                 });
             };
-
+    
             const observer = new IntersectionObserver(animateOnScroll, {
                 root: null,
                 threshold: 0.1
             });
-
+    
             document.querySelectorAll('.card').forEach(card => {
                 observer.observe(card);
             });
