@@ -15,23 +15,7 @@
         :root {
             --bg-color: #000000;
             --text-color: #ffffff;
-            --text-secondary: #ffffff;
-            --text-dim: #ffffff;
-            --prompt-color: #ffffff;
-            --cursor-color: #ffffff;
-            --selection-bg: #ffffff;
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg-color: #000000;
-                --text-color: #ffffff;
-                --text-secondary: #ffffff;
-                --text-dim: #ffffff;
-                --prompt-color: #ffffff;
-                --cursor-color: #ffffff;
-                --selection-bg: #ffffff;
-            }
+            --border-color: #ffffff;
         }
 
         ::selection {
@@ -43,28 +27,30 @@
             font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
             color: var(--text-color);
             background-color: var(--bg-color);
-            line-height: 1.6;
-            font-size: 14px;
-            padding: 20px;
-        }
-
-        .terminal {
-            max-width: 800px;
+            line-height: 1.7;
+            font-size: 15px;
+            padding: 40px 20px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
+        .terminal-header {
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+
         .prompt {
-            color: var(--prompt-color);
             font-weight: bold;
         }
 
         .cursor {
             display: inline-block;
-            width: 8px;
-            height: 16px;
-            background-color: var(--cursor-color);
+            width: 10px;
+            height: 18px;
+            background-color: var(--text-color);
             animation: blink 1s infinite;
-            margin-left: 2px;
+            margin-left: 4px;
         }
 
         @keyframes blink {
@@ -72,293 +58,382 @@
             50%, 100% { opacity: 0; }
         }
 
-        header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-        }
-
-        .header-line {
+        .brand {
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
 
-        nav {
-            margin: 2rem 0;
-            padding: 1rem 0;
-            border-top: 1px dashed var(--text-dim);
-            border-bottom: 1px dashed var(--text-dim);
+        .tagline {
+            opacity: 0.8;
+            font-size: 0.95rem;
         }
 
-        nav .menu-line {
-            margin: 0.5rem 0;
+        nav {
+            margin: 3rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .command {
+            margin-bottom: 1rem;
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--text-color);
             text-decoration: none;
-            transition: color 0.2s;
+            padding: 0.25rem 0.5rem;
+            transition: background 0.2s;
         }
 
         nav a:hover {
-            color: var(--text-color);
-            text-decoration: underline;
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .separator {
+            margin: 0 1rem;
+            opacity: 0.5;
         }
 
         section {
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
 
-        .section-header {
-            color: var(--prompt-color);
-            margin-bottom: 1rem;
-            font-weight: bold;
+        .section-title {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .output-line {
-            color: var(--text-secondary);
-            margin: 0.5rem 0;
+        .output {
+            margin: 1.5rem 0;
             padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .output-item {
+            margin: 1rem 0;
         }
 
         .comment {
-            color: var(--text-dim);
+            opacity: 0.7;
+            font-style: italic;
         }
 
-        .command {
-            color: var(--text-color);
-            margin: 1rem 0;
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--border-color);
+            margin-right: 0.5rem;
+            font-size: 0.85rem;
         }
 
-        .pipe {
-            color: var(--prompt-color);
-            margin: 0 0.5rem;
-        }
-
-        a {
-            color: var(--text-color);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--text-color);
-        }
-
-        a:hover {
-            background-color: var(--selection-bg);
-        }
-
-        .skill-item, .project-item {
-            margin: 1.5rem 0;
+        .project {
+            margin: 2.5rem 0;
+            padding: 1.5rem;
+            border-left: 3px solid var(--border-color);
             padding-left: 2rem;
         }
 
-        .ascii-art {
-            color: var(--text-dim);
-            font-size: 10px;
-            line-height: 1.2;
-            margin: 1rem 0;
+        .project-title {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
         }
 
-        .status-ok {
+        .project-meta {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .project-desc {
+            margin: 0.75rem 0;
+            line-height: 1.7;
+        }
+
+        .link {
             color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-color);
+            padding-bottom: 2px;
+            transition: all 0.2s;
         }
 
-        .status-info {
-            color: var(--text-secondary);
+        .link:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-title {
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+        }
+
+        .contact-list {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            margin: 1rem 0;
+            padding-left: 2rem;
         }
 
         footer {
-            margin-top: 4rem;
+            margin-top: 5rem;
             padding-top: 2rem;
-            border-top: 1px dashed var(--text-dim);
-            color: var(--text-dim);
+            border-top: 1px solid var(--border-color);
+            opacity: 0.6;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
             body {
-                font-size: 12px;
-                padding: 10px;
+                font-size: 13px;
+                padding: 20px 15px;
             }
 
-            .output-line, .skill-item, .project-item {
+            .terminal-header {
+                padding: 1.5rem;
+            }
+
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
                 padding-left: 1rem;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0.5rem 0;
+            }
+
+            .separator {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="terminal">
-        <header>
-            <div class="header-line">
-                <span class="prompt">faruk@bio</span>:<span class="prompt">~</span>$ whoami
-            </div>
-            <div class="output-line">Faruk Dube | PhD | Bioinformatician</div>
-            <div class="output-line comment"># Decoding genomes, deploying pipelines, debugging life</div>
-        </header>
-
-        <nav>
-            <div class="menu-line">
-                <span class="prompt">$</span> ls -la /portfolio/
-            </div>
-            <div class="output-line">
-                <a href="#about">about.md</a> <span class="pipe">|</span>
-                <a href="#skills">skills/</a> <span class="pipe">|</span>
-                <a href="#work">work/</a> <span class="pipe">|</span>
-                <a href="#contact">contact.sh</a>
-            </div>
-        </nav>
-
-        <main>
-            <section id="about">
-                <div class="section-header">
-                    <span class="prompt">$</span> cat about.md
-                </div>
-                <div class="output-line">
-                    PhD scientist | Computational biologist @ SciLifeLab
-                </div>
-                <div class="output-line">
-                    Currently: Reverse-engineering the vaginal microbiome
-                </div>
-                <div class="output-line">
-                    Mission: Map microbial patterns → predict health outcomes
-                </div>
-                <div class="output-line">
-                    Method: Phylogenetics + ML + genomic archaeology
-                </div>
-                <br>
-                <div class="command">
-                    <span class="prompt">$</span> ./what_i_do.sh --verbose
-                </div>
-                <div class="output-line">[<span class="status-ok">✓</span>] Genomic data analysis & interpretation</div>
-                <div class="output-line">[<span class="status-ok">✓</span>] ML applications in biological systems</div>
-                <div class="output-line">[<span class="status-ok">✓</span>] Microbiome research & computational ecology</div>
-                <div class="output-line">[<span class="status-ok">✓</span>] Bioinformatics pipeline development</div>
-            </section>
-
-            <section id="skills">
-                <div class="section-header">
-                    <span class="prompt">$</span> grep -r "skills" --include="*.{R,py,sh}"
-                </div>
-
-                <div class="skill-item">
-                    <div class="command">
-                        <span class="comment"># Genomics</span>
-                    </div>
-                    <div class="output-line">
-                        Sequencing data → insights | WGS, RNA-seq, metagenomics
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="command">
-                        <span class="comment"># Data Science</span>
-                    </div>
-                    <div class="output-line">
-                        R + Python + Bash | Statistical modeling | Data viz
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="command">
-                        <span class="comment"># Machine Learning</span>
-                    </div>
-                    <div class="output-line">
-                        Pattern recognition in high-dim biological data
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="command">
-                        <span class="comment"># Pipeline Engineering</span>
-                    </div>
-                    <div class="output-line">
-                        Snakemake | Nextflow | Reproducible workflows
-                    </div>
-                </div>
-            </section>
-
-            <section id="work">
-                <div class="section-header">
-                    <span class="prompt">$</span> git log --all --oneline --graph
-                </div>
-
-                <div class="project-item">
-                    <div class="command">
-                        * <span class="status-info">d4a8f2c</span> (2024) Gene co-expression in <em>P. univalens</em>
-                    </div>
-                    <div class="output-line comment">
-                        // Core responsive genes post-ivermectin exposure
-                    </div>
-                    <div class="output-line">
-                        → <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298039" target="_blank">doi:10.1371/journal.pone.0298039</a>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="command">
-                        * <span class="status-info">7bc39e1</span> (2023) Ivermectin response in <em>C. elegans</em>
-                    </div>
-                    <div class="output-line comment">
-                        // Integrated QTL mapping + drug resistance pathways
-                    </div>
-                    <div class="output-line">
-                        → <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285262" target="_blank">doi:10.1371/journal.pone.0285262</a>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="command">
-                        * <span class="status-info">3f1c8a9</span> (2022) Anthelminthic resistance study
-                    </div>
-                    <div class="output-line comment">
-                        // Comparative genomics: P. univalens vs C. elegans
-                    </div>
-                    <div class="output-line">
-                        → <a href="https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-022-05260-4" target="_blank">doi:10.1186/s13071-022-05260-4</a>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="command">
-                        * <span class="status-info">9ae2d7f</span> (side-quest) PhD Planner
-                    </div>
-                    <div class="output-line comment">
-                        // Web app: defense deadline management for PhD students
-                    </div>
-                    <div class="output-line">
-                        → <a href="https://www.phdplanner.com" target="_blank">phdplanner.com</a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <div class="section-header">
-                    <span class="prompt">$</span> ./contact.sh --list-channels
-                </div>
-                <div class="output-line">
-                    [<span class="status-ok">✓</span>] <a href="mailto:farukmeddie@gmail.com">farukmeddie@gmail.com</a>
-                </div>
-                <div class="output-line">
-                    [<span class="status-ok">✓</span>] <a href="https://github.com/ruqse" target="_blank">github.com/ruqse</a>
-                </div>
-                <div class="output-line">
-                    [<span class="status-ok">✓</span>] <a href="https://www.linkedin.com/in/farukdube" target="_blank">linkedin.com/in/farukdube</a>
-                </div>
-                <div class="output-line">
-                    [<span class="status-ok">✓</span>] <a href="https://instagram.com/farukdube" target="_blank">instagram.com/farukdube</a>
-                </div>
-                <br>
-                <div class="command comment">
-                    # Open to: collaborations | consulting | interesting problems
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="output-line">
-                <span class="prompt">$</span> echo "Built with $(date +%Y) © Faruk Dube"<span class="cursor"></span>
-            </div>
-            <div class="output-line comment">
-                # Crafted in terminal, deployed to web
-            </div>
-        </footer>
+    <div class="terminal-header">
+        <div class="command">
+            <span class="prompt">$</span> whoami
+        </div>
+        <div class="brand">
+            FARUK DUBE | PhD | Bioinformatician
+        </div>
+        <div class="tagline">
+            <span class="comment"># Decoding genomes | Building pipelines | Debugging biology</span>
+        </div>
     </div>
+
+    <nav>
+        <div class="command">
+            <span class="prompt">$</span> ls -la ./
+        </div>
+        <div style="padding-left: 2rem; margin-top: 1rem;">
+            <a href="#about">about/</a><span class="separator">|</span>
+            <a href="#skills">skills/</a><span class="separator">|</span>
+            <a href="#work">work/</a><span class="separator">|</span>
+            <a href="#projects">projects/</a><span class="separator">|</span>
+            <a href="#contact">contact/</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about">
+            <div class="section-title">
+                <span class="prompt">$</span> cat about.txt
+            </div>
+            <div class="output">
+                <div class="output-item">
+                    <strong>CURRENT POSITION</strong><br>
+                    PhD Scientist · Computational Biologist @ SciLifeLab, Sweden
+                </div>
+                <div class="output-item">
+                    <strong>RESEARCH FOCUS</strong><br>
+                    Reverse-engineering the vaginal microbiome to map microbial community patterns and predict women's health outcomes
+                </div>
+                <div class="output-item">
+                    <strong>METHODOLOGY</strong><br>
+                    Phylogenetic analysis · Machine learning · Genomic archaeology · Computational ecology
+                </div>
+                <div class="output-item">
+                    <strong>MISSION</strong><br>
+                    Transform complex biological data into actionable health insights through computational innovation
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-title">
+                <span class="prompt">$</span> ./list_skills.sh
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <div class="skill-title">→ Genomics & Sequencing</div>
+                    <div class="comment">
+                        WGS · RNA-seq · Metagenomics<br>
+                        Assembly · Annotation · Variant calling
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-title">→ Data Science</div>
+                    <div class="comment">
+                        R · Python · Bash<br>
+                        Statistical modeling · Data visualization
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-title">→ Machine Learning</div>
+                    <div class="comment">
+                        Pattern recognition · Classification<br>
+                        High-dimensional biological data
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-title">→ Pipeline Engineering</div>
+                    <div class="comment">
+                        Snakemake · Nextflow<br>
+                        Reproducible workflows · HPC
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work">
+            <div class="section-title">
+                <span class="prompt">$</span> git log --all --graph --decorate
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Gene co-expression networks in <em>Parascaris univalens</em>
+                </div>
+                <div class="project-meta">
+                    <span class="badge">2024</span>
+                    <span class="comment">Core responsive genes following ivermectin exposure</span>
+                </div>
+                <div class="project-desc">
+                    Identified key gene regulatory networks underlying drug resistance in parasitic nematodes using co-expression analysis and network biology approaches.
+                </div>
+                <div>
+                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298039" target="_blank" class="link">
+                        → Read publication
+                    </a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Ivermectin response mechanisms in <em>C. elegans</em>
+                </div>
+                <div class="project-meta">
+                    <span class="badge">2023</span>
+                    <span class="comment">Integrative QTL mapping + drug resistance pathways</span>
+                </div>
+                <div class="project-desc">
+                    Combined quantitative trait loci mapping with transcriptomics to dissect genetic architecture of abamectin resistance.
+                </div>
+                <div>
+                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285262" target="_blank" class="link">
+                        → Read publication
+                    </a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Anthelminthic resistance comparative genomics
+                </div>
+                <div class="project-meta">
+                    <span class="badge">2022</span>
+                    <span class="comment">Cross-species analysis: P. univalens vs C. elegans</span>
+                </div>
+                <div class="project-desc">
+                    Comparative genomics study revealing conserved mechanisms of drug resistance across nematode species.
+                </div>
+                <div>
+                    <a href="https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-022-05260-4" target="_blank" class="link">
+                        → Read publication
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-title">
+                <span class="prompt">$</span> ls ~/side-projects/
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * PhD Planner · Sweden's PhD Platform
+                </div>
+                <div class="project-meta">
+                    <span class="badge">Web App</span>
+                    <span class="comment">Active development</span>
+                </div>
+                <div class="project-desc">
+                    All-in-one platform for PhD students: Find courses, plan your defence, crunch stats with StatBox, and map your research literature with LinkedPapers.
+                </div>
+                <div>
+                    <a href="https://www.phdplanner.com" target="_blank" class="link">
+                        → Visit phdplanner.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-title">
+                <span class="prompt">$</span> cat contact_info.txt
+            </div>
+            <div class="contact-list">
+                <div class="contact-item">
+                    → Email: <a href="mailto:farukmeddie@gmail.com" class="link">farukmeddie@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    → GitHub: <a href="https://github.com/ruqse" target="_blank" class="link">github.com/ruqse</a>
+                </div>
+                <div class="contact-item">
+                    → LinkedIn: <a href="https://www.linkedin.com/in/farukdube" target="_blank" class="link">linkedin.com/in/farukdube</a>
+                </div>
+                <div class="contact-item">
+                    → Instagram: <a href="https://instagram.com/farukdube" target="_blank" class="link">instagram.com/farukdube</a>
+                </div>
+            </div>
+            <div class="output" style="margin-top: 2rem;">
+                <div class="comment">
+                    # Open to: Research collaborations · Consulting opportunities · Interesting problems
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <span class="prompt">$</span> echo "© 2025 Faruk Dube"<span class="cursor"></span>
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <span class="comment"># Built with terminal aesthetics, deployed to web</span>
+        </div>
+    </footer>
 
     <script>
         // Smooth scrolling
@@ -372,7 +447,7 @@
             });
         });
 
-        // Terminal easter egg - konami code or custom sequence
+        // Terminal easter egg
         let sequence = [];
         const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
 
@@ -381,9 +456,9 @@
             sequence = sequence.slice(-secretCode.length);
 
             if (sequence.join(',') === secretCode.join(',')) {
-                console.log('🧬 Easter egg activated! Access granted to hidden bio-data.');
-                console.log('> sudo cat /dev/genome');
-                console.log('ATCGATCGATCG...');
+                console.log('🧬 Access granted to bio-vault');
+                console.log('> cat /dev/genome');
+                console.log('ATCGATCG...');
             }
         });
     </script>
