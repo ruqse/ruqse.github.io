@@ -200,6 +200,27 @@
             text-align: center;
         }
 
+        .timeline-entry {
+            margin: 1.2rem 0;
+            line-height: 1.6;
+        }
+
+        .category-header {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .pub-entry {
+            margin: 0.8rem 0;
+            padding-left: 2rem;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             body {
                 font-size: 13px;
@@ -235,10 +256,10 @@
             <span class="prompt">$</span> whoami
         </div>
         <div class="brand">
-            FARUK DUBE | PhD | Bioinformatician
+            FARUK DUBE | PhD | Bioinformatics Scientist
         </div>
         <div class="tagline">
-            <span class="comment"># Decoding genomes | Building pipelines | Debugging biology</span>
+            <span class="comment"># 11+ years | Genomes + Pipelines + ML | Sweden . USA . Uganda</span>
         </div>
     </div>
 
@@ -248,9 +269,10 @@
         </div>
         <div style="padding-left: 2rem; margin-top: 1rem;">
             <a href="#about">about/</a><span class="separator">|</span>
+            <a href="#journey">journey/</a><span class="separator">|</span>
             <a href="#skills">skills/</a><span class="separator">|</span>
-            <a href="#work">work/</a><span class="separator">|</span>
             <a href="#projects">projects/</a><span class="separator">|</span>
+            <a href="#publications">publications/</a><span class="separator">|</span>
             <a href="#contact">contact/</a>
         </div>
     </nav>
@@ -263,19 +285,51 @@
             <div class="output">
                 <div class="output-item">
                     <strong>CURRENT POSITION</strong><br>
-                    PhD Scientist · Computational Biologist @ SciLifeLab, Sweden
+                    Bioinformatics Scientist @ SciLifeLab / Uppsala University
                 </div>
                 <div class="output-item">
-                    <strong>RESEARCH FOCUS</strong><br>
-                    Reverse-engineering the vaginal microbiome to map microbial community patterns and predict women's health outcomes
+                    <strong>FOCUS</strong><br>
+                    Scalable pipelines and ML frameworks for multi-omics &amp; pathogen genomics
                 </div>
                 <div class="output-item">
-                    <strong>METHODOLOGY</strong><br>
-                    Phylogenetic analysis · Machine learning · Genomic archaeology · Computational ecology
+                    <strong>APPROACH</strong><br>
+                    End-to-end: raw sequencing data &rarr; statistical modelling &rarr; publication-ready outputs
                 </div>
                 <div class="output-item">
-                    <strong>MISSION</strong><br>
-                    Transform complex biological data into actionable health insights through computational innovation
+                    <strong>IMPACT</strong><br>
+                    7 papers &middot; 500+ samples processed &middot; 15+ researchers trained &middot; 3 continents
+                </div>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="section-title">
+                <span class="prompt">$</span> git log --oneline --graph
+            </div>
+            <div class="output">
+                <div class="timeline-entry">
+                    * <span class="badge">2024-now</span> <strong>Bioinformatics Scientist</strong> &mdash; SciLifeLab / Uppsala University &amp; SLU<br>
+                    <span class="comment" style="padding-left: 2rem;"># Multi-omics, ML models, metagenomics, pangenomics, 5+ concurrent projects</span>
+                </div>
+                <div class="timeline-entry">
+                    * <span class="badge">2023</span> <strong>Visiting Scholar</strong> &mdash; Northwestern University, USA<br>
+                    <span class="comment" style="padding-left: 2rem;"># GWAS &amp; QTL pipelines for drug resistance genomics</span>
+                </div>
+                <div class="timeline-entry">
+                    * <span class="badge">2019-2024</span> <strong>PhD Biomedical Sciences</strong> &mdash; Swedish University of Agricultural Sciences<br>
+                    <span class="comment" style="padding-left: 2rem;"># Bioinformatics &amp; drug resistance in parasites, 4 first-author papers</span>
+                </div>
+                <div class="timeline-entry">
+                    * <span class="badge">2018-2019</span> <strong>Research Engineer</strong> &mdash; Swedish Veterinary Agency<br>
+                    <span class="comment" style="padding-left: 2rem;"># NGS pipelines, antimicrobial resistance surveillance</span>
+                </div>
+                <div class="timeline-entry">
+                    * <span class="badge">2016-2018</span> <strong>MSc Infection Biology</strong> &mdash; Uppsala University<br>
+                    <span class="comment" style="padding-left: 2rem;"># Infectious pathogens and their biology</span>
+                </div>
+                <div class="timeline-entry">
+                    * <span class="badge">2013-2016</span> <strong>Lab Technologist</strong> &mdash; Makerere University / Walter Reed Project, Uganda<br>
+                    <span class="comment" style="padding-left: 2rem;"># USAID pandemic surveillance, data coordination across Africa</span>
                 </div>
             </div>
         </section>
@@ -286,116 +340,229 @@
             </div>
             <div class="skill-grid">
                 <div class="skill-item">
-                    <div class="skill-title">→ Genomics & Sequencing</div>
+                    <div class="skill-title">&rarr; Genomics &amp; Multi-Omics</div>
                     <div class="comment">
-                        WGS · RNA-seq · Metagenomics<br>
-                        Assembly · Annotation · Variant calling
+                        WGS &middot; RNA-seq &middot; Metagenomics<br>
+                        Metabolomics &middot; GWAS/QTL &middot; Pangenomics
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">→ Data Science</div>
+                    <div class="skill-title">&rarr; Pipeline Engineering</div>
                     <div class="comment">
-                        R · Python · Bash<br>
-                        Statistical modeling · Data visualization
+                        Nextflow DSL2 &middot; nf-core<br>
+                        Docker/Singularity &middot; SLURM/HPC &middot; GPU
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">→ Machine Learning</div>
+                    <div class="skill-title">&rarr; Machine Learning &amp; AI</div>
                     <div class="comment">
-                        Pattern recognition · Classification<br>
-                        High-dimensional biological data
+                        scikit-learn &middot; PyTorch<br>
+                        CNN / LSTM / Transformers / GNN
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">→ Pipeline Engineering</div>
+                    <div class="skill-title">&rarr; Programming &amp; Data</div>
                     <div class="comment">
-                        Snakemake · Nextflow<br>
-                        Reproducible workflows · HPC
+                        R &middot; Python &middot; Bash &middot; SQL<br>
+                        Django &middot; REST APIs &middot; Git
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="work">
-            <div class="section-title">
-                <span class="prompt">$</span> git log --all --graph --decorate
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Gene co-expression networks in <em>Parascaris univalens</em>
+                <div class="skill-item">
+                    <div class="skill-title">&rarr; Data Visualization</div>
+                    <div class="comment">
+                        ggplot2 &middot; ggtree &middot; matplotlib<br>
+                        seaborn &middot; publication figures
+                    </div>
                 </div>
-                <div class="project-meta">
-                    <span class="badge">2024</span>
-                    <span class="comment">Core responsive genes following ivermectin exposure</span>
-                </div>
-                <div class="project-desc">
-                    Identified key gene regulatory networks underlying drug resistance in parasitic nematodes using co-expression analysis and network biology approaches.
-                </div>
-                <div>
-                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298039" target="_blank" class="link">
-                        → Read publication
-                    </a>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Ivermectin response mechanisms in <em>C. elegans</em>
-                </div>
-                <div class="project-meta">
-                    <span class="badge">2023</span>
-                    <span class="comment">Integrative QTL mapping + drug resistance pathways</span>
-                </div>
-                <div class="project-desc">
-                    Combined quantitative trait loci mapping with transcriptomics to dissect genetic architecture of abamectin resistance.
-                </div>
-                <div>
-                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0285262" target="_blank" class="link">
-                        → Read publication
-                    </a>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Anthelminthic resistance comparative genomics
-                </div>
-                <div class="project-meta">
-                    <span class="badge">2022</span>
-                    <span class="comment">Cross-species analysis: P. univalens vs C. elegans</span>
-                </div>
-                <div class="project-desc">
-                    Comparative genomics study revealing conserved mechanisms of drug resistance across nematode species.
-                </div>
-                <div>
-                    <a href="https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-022-05260-4" target="_blank" class="link">
-                        → Read publication
-                    </a>
+                <div class="skill-item">
+                    <div class="skill-title">&rarr; Multi-Omics Integration</div>
+                    <div class="comment">
+                        DIABLO &middot; MOFA2 &middot; DESeq2<br>
+                        QIIME2 &middot; phyloseq &middot; Kraken2
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="projects">
             <div class="section-title">
-                <span class="prompt">$</span> ls ~/side-projects/
+                <span class="prompt">$</span> find ~/projects/ -type d
+            </div>
+
+            <div class="category-header">
+                <span class="prompt">$</span> ls ./research-pipelines/
             </div>
 
             <div class="project">
                 <div class="project-title">
-                    * PhD Planner · Sweden's PhD Platform
+                    * Viral Benchmarking Pipeline
+                </div>
+                <div class="project-meta">
+                    <span class="badge">Nextflow DSL2</span>
+                    <span class="badge">Docker</span>
+                    <span class="badge">PyTorch</span>
+                    <span class="comment">13 tools &middot; 5 subworkflows &middot; GPU</span>
+                </div>
+                <div class="project-desc">
+                    Modular pipeline integrating deep learning models (CNN, LSTM, Transformers, GNN) with GPU-accelerated inference for comprehensive virus identification benchmarking.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * High-Throughput Transcriptomic Pipeline
+                </div>
+                <div class="project-meta">
+                    <span class="badge">Nextflow</span>
+                    <span class="badge">Docker</span>
+                    <span class="badge">DESeq2</span>
+                    <span class="comment">multi-species</span>
+                </div>
+                <div class="project-desc">
+                    Automated differential expression analysis with integrated QC for transcriptomic profiling across multiple experimental systems &mdash; sweet potato viral challenge and cell line parasite response.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Virome-Microbiome Analysis Workflow
+                </div>
+                <div class="project-meta">
+                    <span class="badge">Nextflow</span>
+                    <span class="badge">Docker</span>
+                    <span class="badge">Python</span>
+                    <span class="comment">surveillance</span>
+                </div>
+                <div class="project-desc">
+                    Automated pipelines for public health surveillance integrating viral and microbial community profiling with external data sources.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * GWAS Pipeline for Drug Resistance
+                </div>
+                <div class="project-meta">
+                    <span class="badge">R</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">FreeBayes</span>
+                    <span class="comment">QTL mapping</span>
+                </div>
+                <div class="project-desc">
+                    Association mapping and QTL analysis workflows with reproducible visualization for genomic studies of drug resistance in parasites.
+                </div>
+            </div>
+
+            <div class="category-header">
+                <span class="prompt">$</span> ls ./ml-and-multi-omics/
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Multi-Omics Microbiome Platform
+                </div>
+                <div class="project-meta">
+                    <span class="badge">Python</span>
+                    <span class="badge">R</span>
+                    <span class="badge">DIABLO</span>
+                    <span class="badge">MOFA2</span>
+                    <span class="comment">BV pathogenesis</span>
+                </div>
+                <div class="project-desc">
+                    Integrated shotgun metagenomics, targeted LC-MS metabolomics, and Gardnerella pangenomics using supervised and unsupervised multi-omics methods for community-level characterization of bacterial vaginosis.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * ML Models for Vaginal Microbiome
+                </div>
+                <div class="project-meta">
+                    <span class="badge">R</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">scikit-learn</span>
+                    <span class="comment">biomarker ID</span>
+                </div>
+                <div class="project-desc">
+                    Computational tools for biomarker identification and clinical prediction from microbiome data using machine learning classification models.
+                </div>
+            </div>
+
+            <div class="category-header">
+                <span class="prompt">$</span> ls ./web-apps/
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * PhD Planner &mdash; phdplanner.com
                 </div>
                 <div class="project-meta">
                     <span class="badge">Web App</span>
-                    <span class="comment">Active development</span>
+                    <span class="comment">A platform for PhD students in Sweden</span>
                 </div>
                 <div class="project-desc">
-                    All-in-one platform for PhD students: Find courses, plan your defence, crunch stats with StatBox, and map your research literature with LinkedPapers.
+                    <strong>Courses360</strong>: Search and recommendations across 700+ courses from 16 Swedish universities.<br>
+                    <strong>DefencePlanner</strong>: Milestone tracking with automated email reminders for PhD defence planning.<br>
+                    <strong>LinkedPapers</strong>: Interactive citation graph, paper search, and reading lists.
                 </div>
                 <div>
                     <a href="https://www.phdplanner.com" target="_blank" class="link">
-                        → Visit phdplanner.com
+                        &rarr; Visit phdplanner.com
                     </a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">
+                    * Gene Co-Expression Network Analysis
+                </div>
+                <div class="project-meta">
+                    <span class="badge">R</span>
+                    <span class="badge">Seidr</span>
+                    <span class="badge">Leiden</span>
+                    <span class="comment">10 inference algorithms &middot; 3 papers</span>
+                </div>
+                <div class="project-desc">
+                    Consensus network construction using 10 inference algorithms with Leiden module detection, identifying core responsive genes across parasitic, bacterial, and viral pathogen datasets.
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="section-title">
+                <span class="prompt">$</span> grep -r "Dube F" ~/publications/
+            </div>
+            <div class="output">
+                <div class="pub-entry">
+                    <span class="badge">2025</span> Adero J, ..., <strong>Dube F</strong>, et al. Virus-Specific Defense Responses in Sweetpotato. <em>Biology</em>, 14(11):1541.
+                    <a href="https://doi.org/10.3390/biology14111541" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2024</span> <strong>Dube F</strong> et al. Gene co-expression network analysis in <em>P. univalens</em> following ivermectin exposure. <em>PLoS One</em>, 19(2):e0298039.
+                    <a href="https://doi.org/10.1371/journal.pone.0298039" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2023</span> Valeckova E, ..., <strong>Dube F</strong>, et al. Intestinal colonization with <em>C. jejuni</em> affects broiler gut microbiota. <em>Front Microbiol</em>, 14:1205797.
+                    <a href="https://doi.org/10.3389/fmicb.2023.1205797" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2023</span> <strong>Dube F</strong> et al. Transcriptomics of ivermectin response in <em>C. elegans</em>: integrative QTL mapping. <em>PLoS One</em>, 18(5):e0285262.
+                    <a href="https://doi.org/10.1371/journal.pone.0285262" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2022</span> <strong>Dube F</strong> et al. Ivermectin-induced gene expression changes in <em>P. univalens</em> and <em>C. elegans</em>. <em>Parasit Vectors</em>, 15(1):158.
+                    <a href="https://doi.org/10.1186/s13071-022-05260-4" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2021</span> <strong>Dube F</strong> et al. Benzylpenicillin-producing <em>T. erinacei</em> and MRSA on European hedgehogs. <em>BMC Microbiol</em>, 21(1):212.
+                    <a href="https://doi.org/10.1186/s12866-021-02260-9" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry">
+                    <span class="badge">2020</span> Martin F, <strong>Dube F</strong>, et al. Transcriptional responses in <em>P. univalens</em> after anthelminthic exposure. <em>Parasit Vectors</em>, 13(1):342.
+                    <a href="https://doi.org/10.1186/s13071-020-04212-0" target="_blank" class="link">&rarr; DOI</a>
+                </div>
+                <div class="pub-entry" style="margin-top: 1.5rem;">
+                    <span class="comment"># +3 manuscripts in preparation</span>
                 </div>
             </div>
         </section>
@@ -406,21 +573,21 @@
             </div>
             <div class="contact-list">
                 <div class="contact-item">
-                    → Email: <a href="mailto:farukmeddie@gmail.com" class="link">farukmeddie@gmail.com</a>
+                    &rarr; Email: <a href="mailto:farukmeddie@gmail.com" class="link">farukmeddie@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    → GitHub: <a href="https://github.com/ruqse" target="_blank" class="link">github.com/ruqse</a>
+                    &rarr; GitHub: <a href="https://github.com/ruqse" target="_blank" class="link">github.com/ruqse</a>
                 </div>
                 <div class="contact-item">
-                    → LinkedIn: <a href="https://www.linkedin.com/in/farukdube" target="_blank" class="link">linkedin.com/in/farukdube</a>
+                    &rarr; LinkedIn: <a href="https://www.linkedin.com/in/farukdube" target="_blank" class="link">linkedin.com/in/farukdube</a>
                 </div>
                 <div class="contact-item">
-                    → Instagram: <a href="https://instagram.com/farukdube" target="_blank" class="link">instagram.com/farukdube</a>
+                    &rarr; Instagram: <a href="https://instagram.com/farukdube" target="_blank" class="link">instagram.com/farukdube</a>
                 </div>
             </div>
             <div class="output" style="margin-top: 2rem;">
                 <div class="comment">
-                    # Open to: Research collaborations · Consulting opportunities · Interesting problems
+                    # Open to: Research collaborations &middot; Consulting opportunities &middot; Interesting problems
                 </div>
             </div>
         </section>
@@ -428,7 +595,7 @@
 
     <footer>
         <div>
-            <span class="prompt">$</span> echo "© 2025 Faruk Dube"<span class="cursor"></span>
+            <span class="prompt">$</span> echo "&copy; 2026 Faruk Dube"<span class="cursor"></span>
         </div>
     </footer>
 
