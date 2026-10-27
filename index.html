@@ -1,10 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>faruk@bio:~$ whoami</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>faruk@bio:~$ whoami</title>
+    <meta name="description" content="Faruk Dube, PhD. Bioinformatics scientist at SciLifeLab / Uppsala University working on vaginal microbiome multi-omics, benchmarking of virome tools, parasite drug-resistance genomics, and reproducible pipelines." />
+    <meta property="og:title" content="Faruk Dube | Bioinformatics Scientist" />
+    <meta property="og:description" content="Vaginal microbiome multi-omics, virome tool benchmarking, parasite genomics, reproducible pipelines." />
+    <meta property="og:url" content="https://ruqse.github.io/" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,151 +21,217 @@
 
         :root {
             --bg-color: #000000;
-            --text-color: #ffffff;
-            --border-color: #ffffff;
+            --text-color: #ededed;
+            --muted: #9a9a9a;
+            --line: #3a3a3a;
+            --border-color: #ededed;
+            --accent: #7ee787;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         ::selection {
-            background: #ffffff;
-            color: #000000;
+            background: var(--text-color);
+            color: var(--bg-color);
         }
 
         body {
-            font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+            font-family: 'JetBrains Mono', 'Courier New', 'Monaco', 'Menlo', monospace;
             color: var(--text-color);
             background-color: var(--bg-color);
             line-height: 1.7;
             font-size: 15px;
             padding: 40px 20px;
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
-        .terminal-header {
-            margin-bottom: 3rem;
-            border: 1px solid var(--border-color);
-            padding: 2rem;
+        a {
+            color: inherit;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        h1, h2, h3 {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        em {
+            font-style: italic;
         }
 
         .prompt {
-            font-weight: bold;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comment {
+            color: var(--muted);
+            font-style: italic;
         }
 
         .cursor {
             display: inline-block;
-            width: 10px;
-            height: 18px;
+            width: 9px;
+            height: 1.1em;
+            vertical-align: text-bottom;
             background-color: var(--text-color);
-            animation: blink 1s infinite;
+            animation: blink 1s steps(1) infinite;
             margin-left: 4px;
         }
 
         @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
+            50% { opacity: 0; }
+        }
+
+        /* ---------- terminal window ---------- */
+        .window {
+            border: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .window-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid var(--muted);
+        }
+
+        .window-title {
+            margin-left: auto;
+            margin-right: auto;
+            padding-right: 3rem;
+        }
+
+        .window-body {
+            padding: 2rem;
         }
 
         .brand {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin: 0.75rem 0 0.25rem;
         }
 
-        .tagline {
-            opacity: 0.8;
-            font-size: 0.95rem;
+        .role {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
         }
 
+        .quicklinks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            margin-top: 1.25rem;
+        }
+
+        /* ---------- nav ---------- */
         nav {
-            margin: 3rem 0;
-            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--bg-color);
+            padding: 0.75rem 0;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-        }
-
-        nav .command {
-            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.25rem 0.5rem;
+            font-size: 0.9rem;
         }
 
         nav a {
-            color: var(--text-color);
             text-decoration: none;
-            padding: 0.25rem 0.5rem;
-            transition: background 0.2s;
+            padding: 0.15rem 0.45rem;
         }
 
-        nav a:hover {
+        nav a:hover,
+        .quicklinks a:hover {
             background: var(--text-color);
             color: var(--bg-color);
         }
 
-        .separator {
-            margin: 0 1rem;
-            opacity: 0.5;
+        .quicklinks a {
+            text-decoration: none;
+            padding: 0.1rem 0.25rem;
         }
 
+        /* ---------- sections ---------- */
         section {
-            margin: 4rem 0;
+            margin: 4.5rem 0;
+            scroll-margin-top: 4.5rem;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.75rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--border-color);
         }
 
         .output {
-            margin: 1.5rem 0;
             padding-left: 2rem;
-            line-height: 1.8;
         }
 
         .output-item {
-            margin: 1rem 0;
+            margin: 1.1rem 0;
         }
 
-        .comment {
-            opacity: 0.7;
-            font-style: italic;
+        .label {
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
         .badge {
             display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border: 1px solid var(--border-color);
-            margin-right: 0.5rem;
-            font-size: 0.85rem;
+            padding: 0.05rem 0.55rem;
+            border: 1px solid var(--line);
+            margin: 0 0.35rem 0.35rem 0;
+            font-size: 0.8rem;
+            color: var(--muted);
         }
 
-        .project {
-            margin: 2.5rem 0;
-            padding: 1.5rem;
-            border-left: 3px solid var(--border-color);
-            padding-left: 2rem;
+        .tag {
+            display: inline-block;
+            padding: 0.05rem 0.55rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.78rem;
+            white-space: nowrap;
         }
 
-        .project-title {
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-meta {
-            opacity: 0.7;
-            font-size: 0.9rem;
-            margin: 0.5rem 0;
-        }
-
-        .project-desc {
-            margin: 0.75rem 0;
-            line-height: 1.7;
+        .tag.dim {
+            border-color: var(--muted);
+            color: var(--muted);
         }
 
         .link {
-            color: var(--text-color);
             text-decoration: none;
             border-bottom: 1px solid var(--text-color);
-            padding-bottom: 2px;
-            transition: all 0.2s;
+            padding-bottom: 1px;
+            transition: background 0.15s, color 0.15s;
         }
 
         .link:hover {
@@ -166,59 +239,219 @@
             color: var(--bg-color);
         }
 
+        /* ---------- stats ---------- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            border: 1px solid var(--line);
+            margin: 1.5rem 0 0 2rem;
+        }
+
+        .stat {
+            padding: 1rem 1.1rem;
+            border-right: 1px solid var(--line);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* ---------- latest (git log) ---------- */
+        .log li {
+            display: grid;
+            grid-template-columns: 7.5rem 1fr;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .log li:last-child {
+            border-bottom: none;
+        }
+
+        .log time {
+            color: var(--accent);
+        }
+
+        .log .kind {
+            color: var(--muted);
+        }
+
+        /* ---------- journey ---------- */
+        .timeline-entry {
+            margin: 1.2rem 0;
+            line-height: 1.6;
+        }
+
+        .timeline-entry .comment {
+            display: block;
+            padding-left: 2rem;
+        }
+
+        /* ---------- skills ---------- */
         .skill-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.25rem;
         }
 
         .skill-item {
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--line);
+            transition: border-color 0.15s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--border-color);
         }
 
         .skill-title {
-            margin-bottom: 0.75rem;
-            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
-        .contact-list {
-            margin-top: 2rem;
+        /* ---------- projects ---------- */
+        .category-header {
+            margin: 3rem 0 0.5rem;
+            padding-bottom: 0.5rem;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed var(--line);
         }
 
+        .category-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .project {
+            margin: 1.75rem 0;
+            padding: 0.25rem 0 0.25rem 1.75rem;
+            border-left: 3px solid var(--line);
+            transition: border-color 0.15s;
+        }
+
+        .project:hover {
+            border-left-color: var(--accent);
+        }
+
+        .project-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.35rem 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .project-title a {
+            text-decoration: none;
+        }
+
+        .project-title a:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .project-sub {
+            color: var(--muted);
+            margin: 0.2rem 0 0.6rem;
+        }
+
+        .bullets {
+            margin: 0.5rem 0 0.75rem;
+        }
+
+        .bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin: 0.25rem 0;
+            line-height: 1.6;
+        }
+
+        .bullets li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: var(--muted);
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.25rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- publications ---------- */
+        .pub-entry {
+            display: grid;
+            grid-template-columns: 4rem 1fr;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px dashed var(--line);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .pub-entry:last-child {
+            border-bottom: none;
+        }
+
+        .pub-year {
+            color: var(--accent);
+        }
+
+        .pub-title {
+            display: block;
+            margin: 0.1rem 0;
+        }
+
+        .pub-venue {
+            color: var(--muted);
+        }
+
+        .pub-entry .links {
+            margin-top: 0.35rem;
+            font-size: 0.85rem;
+        }
+
+        /* ---------- contact / footer ---------- */
         .contact-item {
-            margin: 1rem 0;
+            margin: 0.8rem 0;
             padding-left: 2rem;
+        }
+
+        .contact-key {
+            display: inline-block;
+            min-width: 7rem;
+            color: var(--muted);
         }
 
         footer {
             margin-top: 5rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
-            opacity: 0.6;
+            color: var(--muted);
             text-align: center;
-        }
-
-        .timeline-entry {
-            margin: 1.2rem 0;
-            line-height: 1.6;
-        }
-
-        .category-header {
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            opacity: 0.8;
-            font-size: 0.95rem;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .pub-entry {
-            margin: 0.8rem 0;
-            padding-left: 2rem;
-            line-height: 1.6;
             font-size: 0.9rem;
+        }
+
+        footer p + p {
+            margin-top: 0.4rem;
         }
 
         @media (max-width: 768px) {
@@ -227,391 +460,649 @@
                 padding: 20px 15px;
             }
 
-            .terminal-header {
-                padding: 1.5rem;
+            .window-body {
+                padding: 1.25rem;
             }
 
-            .skill-grid {
+            .window-title {
+                padding-right: 0;
+            }
+
+            .brand {
+                font-size: 1.3rem;
+            }
+
+            /* nav wraps to several lines on phones; sticky would cover the content */
+            nav {
+                position: static;
+            }
+
+            section {
+                scroll-margin-top: 1rem;
+            }
+
+            .output,
+            .contact-item {
+                padding-left: 1rem;
+            }
+
+            .stats {
+                margin-left: 0;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .stat:nth-child(2n) {
+                border-right: none;
+            }
+
+            .log li,
+            .pub-entry {
                 grid-template-columns: 1fr;
+                gap: 0.15rem;
             }
 
             .project {
                 padding-left: 1rem;
             }
 
-            nav a {
-                display: inline-block;
-                margin: 0.5rem 0;
+            .contact-key {
+                min-width: 5.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
             }
 
-            .separator {
-                display: none;
+            .cursor {
+                animation: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="terminal-header">
-        <div class="command">
-            <span class="prompt">$</span> whoami
+    <header class="window">
+        <div class="window-bar" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="window-title">faruk@bio: ~</span>
         </div>
-        <div class="brand">
-            FARUK DUBE | PhD | Bioinformatics Scientist
+        <div class="window-body">
+            <div><span class="prompt">$</span> whoami</div>
+            <h1 class="brand">FARUK DUBE, PhD</h1>
+            <p class="role">Bioinformatics Scientist &middot; SciLifeLab / Uppsala University</p>
+            <p class="comment"># Vaginal microbiome multi-omics &middot; virome tool benchmarking &middot; parasite drug-resistance genomics &middot; reproducible pipelines</p>
+            <p class="comment"># Research since 2013 in Uganda, Sweden and the USA</p>
+            <p class="quicklinks">
+                <a href="https://github.com/ruqse" target="_blank" rel="noopener">[github]</a>
+                <a href="mailto:farukmeddie@gmail.com">[email]</a>
+                <a href="https://www.linkedin.com/in/farukdube" target="_blank" rel="noopener">[linkedin]</a>
+                <a href="#publications">[papers]</a>
+                <a href="https://sciframe.phdplanner.com/" target="_blank" rel="noopener">[sciframe]</a>
+            </p>
         </div>
-        <div class="tagline">
-            <span class="comment"># 11+ years | Genomes + Pipelines + ML | Sweden . USA . Uganda</span>
-        </div>
-    </div>
+    </header>
 
-    <nav>
-        <div class="command">
-            <span class="prompt">$</span> ls -la ./
-        </div>
-        <div style="padding-left: 2rem; margin-top: 1rem;">
-            <a href="#about">about/</a><span class="separator">|</span>
-            <a href="#journey">journey/</a><span class="separator">|</span>
-            <a href="#skills">skills/</a><span class="separator">|</span>
-            <a href="#projects">projects/</a><span class="separator">|</span>
-            <a href="#publications">publications/</a><span class="separator">|</span>
-            <a href="#contact">contact/</a>
-        </div>
+    <nav aria-label="Sections">
+        <span><span class="prompt">$</span> cd</span>
+        <a href="#about">about/</a>
+        <a href="#latest">latest/</a>
+        <a href="#journey">journey/</a>
+        <a href="#skills">skills/</a>
+        <a href="#projects">projects/</a>
+        <a href="#publications">publications/</a>
+        <a href="#contact">contact/</a>
     </nav>
 
     <main>
         <section id="about">
-            <div class="section-title">
+            <h2 class="section-title">
                 <span class="prompt">$</span> cat about.txt
-            </div>
+            </h2>
             <div class="output">
                 <div class="output-item">
-                    <strong>CURRENT POSITION</strong><br>
+                    <span class="label">CURRENT POSITION</span><br>
                     Bioinformatics Scientist @ SciLifeLab / Uppsala University
                 </div>
                 <div class="output-item">
-                    <strong>FOCUS</strong><br>
-                    Scalable pipelines and ML frameworks for multi-omics &amp; pathogen genomics
+                    <span class="label">FOCUS</span><br>
+                    Multi-omics of the vaginal microbiome in bacterial vaginosis; benchmarking tools that identify viruses in vaginal metagenomes; drug resistance in parasitic nematodes
                 </div>
                 <div class="output-item">
-                    <strong>APPROACH</strong><br>
-                    End-to-end: raw sequencing data &rarr; statistical modelling &rarr; publication-ready outputs
+                    <span class="label">APPROACH</span><br>
+                    End-to-end: raw sequencing data &rarr; statistical modelling &rarr; publication-ready outputs, with code and data released alongside the 2026 papers
                 </div>
-                <div class="output-item">
-                    <strong>IMPACT</strong><br>
-                    7 papers &middot; 500+ samples processed &middot; 15+ researchers trained &middot; 3 continents
-                </div>
+            </div>
+            <div class="stats" aria-label="Publication record">
+                <div class="stat"><div class="stat-num">8</div><div class="stat-label">peer-reviewed papers</div></div>
+                <div class="stat"><div class="stat-num">5</div><div class="stat-label">first or co-first author</div></div>
+                <div class="stat"><div class="stat-num">1</div><div class="stat-label">preprint (bioRxiv 2026)</div></div>
+                <div class="stat"><div class="stat-num">1</div><div class="stat-label">submitted (PLOS ONE)</div></div>
             </div>
         </section>
 
+        <section id="latest">
+            <h2 class="section-title">
+                <span class="prompt">$</span> git log --since=2026-01-01
+            </h2>
+            <ol class="log output">
+                <li>
+                    <time datetime="2026-10-27">2026-10-27</time>
+                    <span><span class="kind">release:</span> <a href="https://github.com/ruqse/hpc-digest" target="_blank" rel="noopener" class="link">hpc-digest</a>, weekly Slack charts of a group's HPC compute and storage use</span>
+                </li>
+                <li>
+                    <time datetime="2026-10-25">2026-10-25</time>
+                    <span><span class="kind">submitted:</span> <em>Parascaris</em> &beta;-tubulin haplotypes and benzimidazole resistance (PLOS ONE); <a href="https://github.com/ruqse/pun-betatublin-BZ" target="_blank" rel="noopener" class="link">code &amp; data</a> public</span>
+                </li>
+                <li>
+                    <time datetime="2026-09-25">2026-09-25</time>
+                    <span><span class="kind">preprint:</span> Benchmarking virus identification tools on vaginal metagenomes, <a href="https://doi.org/10.64898/2026.09.24.753817" target="_blank" rel="noopener" class="link">bioRxiv</a></span>
+                </li>
+                <li>
+                    <time datetime="2026-09-05">2026-09-05</time>
+                    <span><span class="kind">release:</span> <a href="https://c-elegans-atlas.vercel.app/" target="_blank" rel="noopener" class="link"><em>C. elegans</em> Atlas</a>, an interactive 3D anatomy explorer</span>
+                </li>
+                <li>
+                    <time datetime="2026-08-27">2026-08-27</time>
+                    <span><span class="kind">paper:</span> Multi-omics of bacterial vaginosis (co-first author), <a href="https://doi.org/10.1038/s44294-026-00163-6" target="_blank" rel="noopener" class="link"><em>npj Women's Health</em></a></span>
+                </li>
+                <li>
+                    <time datetime="2026-06-08">2026-06-08</time>
+                    <span><span class="kind">analysis:</span> <a href="https://github.com/ruqse/metaphlan4-vs-virgo2-gardnerella" target="_blank" rel="noopener" class="link">MetaPhlAn 4 vs VIRGO2</a> for <em>Gardnerella</em> species resolution</span>
+                </li>
+            </ol>
+        </section>
+
         <section id="journey">
-            <div class="section-title">
+            <h2 class="section-title">
                 <span class="prompt">$</span> git log --oneline --graph
-            </div>
+            </h2>
             <div class="output">
                 <div class="timeline-entry">
-                    * <span class="badge">2024-now</span> <strong>Bioinformatics Scientist</strong> &mdash; SciLifeLab / Uppsala University &amp; SLU<br>
-                    <span class="comment" style="padding-left: 2rem;"># Multi-omics, ML models, metagenomics, pangenomics, 5+ concurrent projects</span>
+                    * <span class="tag">2024&ndash;now</span> <strong>Bioinformatics Scientist</strong> &mdash; SciLifeLab / Uppsala University &amp; SLU
+                    <span class="comment"># Multi-omics, ML models, metagenomics, pangenomics, 5+ concurrent projects</span>
                 </div>
                 <div class="timeline-entry">
-                    * <span class="badge">2023</span> <strong>Visiting Scholar</strong> &mdash; Northwestern University, USA<br>
-                    <span class="comment" style="padding-left: 2rem;"># GWAS &amp; QTL pipelines for drug resistance genomics</span>
+                    * <span class="tag dim">2023</span> <strong>Visiting Scholar</strong> &mdash; Northwestern University, USA
+                    <span class="comment"># GWAS &amp; QTL pipelines for drug resistance genomics</span>
                 </div>
                 <div class="timeline-entry">
-                    * <span class="badge">2019-2024</span> <strong>PhD Biomedical Sciences</strong> &mdash; Swedish University of Agricultural Sciences<br>
-                    <span class="comment" style="padding-left: 2rem;"># Bioinformatics &amp; drug resistance in parasites, 4 first-author papers</span>
+                    * <span class="tag dim">2019&ndash;2024</span> <strong>PhD Biomedical Sciences</strong> &mdash; Swedish University of Agricultural Sciences
+                    <span class="comment"># Bioinformatics &amp; drug resistance in parasites, 4 first-author papers</span>
                 </div>
                 <div class="timeline-entry">
-                    * <span class="badge">2018-2019</span> <strong>Research Engineer</strong> &mdash; Swedish Veterinary Agency<br>
-                    <span class="comment" style="padding-left: 2rem;"># NGS pipelines, antimicrobial resistance surveillance</span>
+                    * <span class="tag dim">2018&ndash;2019</span> <strong>Research Engineer</strong> &mdash; Swedish Veterinary Agency
+                    <span class="comment"># NGS pipelines, antimicrobial resistance surveillance</span>
                 </div>
                 <div class="timeline-entry">
-                    * <span class="badge">2016-2018</span> <strong>MSc Infection Biology</strong> &mdash; Uppsala University<br>
-                    <span class="comment" style="padding-left: 2rem;"># Infectious pathogens and their biology</span>
+                    * <span class="tag dim">2016&ndash;2018</span> <strong>MSc Infection Biology</strong> &mdash; Uppsala University
+                    <span class="comment"># Infectious pathogens and their biology</span>
                 </div>
                 <div class="timeline-entry">
-                    * <span class="badge">2013-2016</span> <strong>Lab Technologist</strong> &mdash; Makerere University / Walter Reed Project, Uganda<br>
-                    <span class="comment" style="padding-left: 2rem;"># USAID pandemic surveillance, data coordination across Africa</span>
+                    * <span class="tag dim">2013&ndash;2016</span> <strong>Lab Technologist</strong> &mdash; Makerere University / Walter Reed Project, Uganda
+                    <span class="comment"># USAID pandemic surveillance, data coordination across Africa</span>
                 </div>
             </div>
         </section>
 
         <section id="skills">
-            <div class="section-title">
+            <h2 class="section-title">
                 <span class="prompt">$</span> ./list_skills.sh
-            </div>
+            </h2>
             <div class="skill-grid">
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Genomics &amp; Multi-Omics</div>
+                    <h3 class="skill-title">&rarr; Genomics &amp; Multi-Omics</h3>
                     <div class="comment">
-                        WGS &middot; RNA-seq &middot; Metagenomics<br>
-                        Metabolomics &middot; GWAS/QTL &middot; Pangenomics
+                        WGS &middot; RNA-seq &middot; Metagenomics &middot; Viromics<br>
+                        Metabolomics &middot; GWAS/QTL &middot; Pangenomics<br>
+                        PacBio HiFi amplicon haplotyping
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Pipeline Engineering</div>
+                    <h3 class="skill-title">&rarr; Pipeline Engineering</h3>
                     <div class="comment">
                         Nextflow DSL2 &middot; nf-core<br>
                         Docker/Singularity &middot; SLURM/HPC &middot; GPU
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Machine Learning &amp; AI</div>
+                    <h3 class="skill-title">&rarr; Machine Learning &amp; AI</h3>
                     <div class="comment">
                         scikit-learn &middot; PyTorch<br>
                         CNN / LSTM / Transformers / GNN
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Programming &amp; Data</div>
+                    <h3 class="skill-title">&rarr; Programming &amp; Data</h3>
                     <div class="comment">
                         R &middot; Python &middot; Bash &middot; SQL<br>
-                        Django &middot; REST APIs &middot; Git
+                        JavaScript &middot; Django &middot; REST APIs &middot; Git
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Data Visualization</div>
+                    <h3 class="skill-title">&rarr; Data Visualization</h3>
                     <div class="comment">
                         ggplot2 &middot; ggtree &middot; matplotlib<br>
                         seaborn &middot; publication figures
                     </div>
                 </div>
                 <div class="skill-item">
-                    <div class="skill-title">&rarr; Multi-Omics Integration</div>
+                    <h3 class="skill-title">&rarr; Multi-Omics Integration</h3>
                     <div class="comment">
                         DIABLO &middot; MOFA2 &middot; DESeq2<br>
-                        QIIME2 &middot; phyloseq &middot; Kraken2
+                        QIIME2 &middot; phyloseq &middot; Kraken2 &middot; MetaPhlAn
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <div class="section-title">
+            <h2 class="section-title">
                 <span class="prompt">$</span> find ~/projects/ -type d
-            </div>
+            </h2>
 
-            <div class="category-header">
-                <span class="prompt">$</span> ls ./research-pipelines/
-            </div>
+            <h3 class="category-header">
+                <span class="prompt">$</span> ls ./microbiome-and-virome/
+            </h3>
 
-            <div class="project">
-                <div class="project-title">
-                    * Viral Benchmarking Pipeline
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/vaginal_virbench" target="_blank" rel="noopener">* Vaginal VirBench</a></h4>
+                    <span class="tag">bioRxiv 2026</span>
                 </div>
-                <div class="project-meta">
-                    <span class="badge">Nextflow DSL2</span>
-                    <span class="badge">Docker</span>
-                    <span class="badge">PyTorch</span>
-                    <span class="comment">13 tools &middot; 5 subworkflows &middot; GPU</span>
-                </div>
-                <div class="project-desc">
-                    Modular pipeline integrating deep learning models (CNN, LSTM, Transformers, GNN) with GPU-accelerated inference for comprehensive virus identification benchmarking.
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * High-Throughput Transcriptomic Pipeline
-                </div>
-                <div class="project-meta">
-                    <span class="badge">Nextflow</span>
-                    <span class="badge">Docker</span>
-                    <span class="badge">DESeq2</span>
-                    <span class="comment">multi-species</span>
-                </div>
-                <div class="project-desc">
-                    Automated differential expression analysis with integrated QC for transcriptomic profiling across multiple experimental systems &mdash; sweet potato viral challenge and cell line parasite response.
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Virome-Microbiome Analysis Workflow
-                </div>
-                <div class="project-meta">
-                    <span class="badge">Nextflow</span>
-                    <span class="badge">Docker</span>
-                    <span class="badge">Python</span>
-                    <span class="comment">surveillance</span>
-                </div>
-                <div class="project-desc">
-                    Automated pipelines for public health surveillance integrating viral and microbial community profiling with external data sources.
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * GWAS Pipeline for Drug Resistance
-                </div>
-                <div class="project-meta">
-                    <span class="badge">R</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">FreeBayes</span>
-                    <span class="comment">QTL mapping</span>
-                </div>
-                <div class="project-desc">
-                    Association mapping and QTL analysis workflows with reproducible visualization for genomic studies of drug resistance in parasites.
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Gene Co-Expression Network Analysis
-                </div>
-                <div class="project-meta">
-                    <span class="badge">R</span>
-                    <span class="badge">Seidr</span>
-                    <span class="badge">Leiden</span>
-                    <span class="comment">10 inference algorithms &middot; 1 paper</span>
-                </div>
-                <div class="project-desc">
-                    Consensus network construction using 10 inference algorithms with Leiden module detection, identifying core responsive genes across parasitic, bacterial, and viral pathogen datasets.
-                </div>
-            </div>
-
-            <div class="category-header">
-                <span class="prompt">$</span> ls ./ml-and-multi-omics/
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * Multi-Omics Microbiome Platform
-                </div>
-                <div class="project-meta">
-                    <span class="badge">Python</span>
-                    <span class="badge">R</span>
-                    <span class="badge">DIABLO</span>
-                    <span class="badge">MOFA2</span>
-                    <span class="comment">BV pathogenesis</span>
-                </div>
-                <div class="project-desc">
-                    Integrated shotgun metagenomics, targeted LC-MS metabolomics, and Gardnerella pangenomics using supervised and unsupervised multi-omics methods for community-level characterization of bacterial vaginosis.
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * ML Models for Vaginal Microbiome
-                </div>
-                <div class="project-meta">
-                    <span class="badge">R</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">scikit-learn</span>
-                    <span class="comment">biomarker ID</span>
-                </div>
-                <div class="project-desc">
-                    Computational tools for biomarker identification and clinical prediction from microbiome data using machine learning classification models.
-                </div>
-            </div>
-
-            <div class="category-header">
-                <span class="prompt">$</span> ls ./web-apps/
-            </div>
-
-            <div class="project">
-                <div class="project-title">
-                    * PhD Planner &mdash; phdplanner.com
-                </div>
-                <div class="project-meta">
-                    <span class="badge">Web App</span>
-                    <span class="comment">A platform for PhD students in Sweden</span>
-                </div>
-                <div class="project-desc">
-                    <strong>Courses360</strong>: Search and recommendations across 700+ courses from 16 Swedish universities.<br>
-                    <strong>DefencePlanner</strong>: Milestone tracking with automated email reminders for PhD defence planning.<br>
-                    <strong>LinkedPapers</strong>: Interactive citation graph, paper search, and reading lists.
-                </div>
+                <p class="project-sub">Benchmarking virus identification tools on vaginal metagenomes</p>
+                <ul class="bullets">
+                    <li>Tests 14 tools across five evaluations: controlled genome fragments, simulated viral spike-ins, real assemblies, RCA-enriched viromes, and an independent cohort</li>
+                    <li>Built on 13 assemblies from South African adolescents; the tool ranking held in an independent 30-sample Swedish cohort, MiTCH (Spearman &rho; = 0.952)</li>
+                    <li>geNomad and VIBRANT led with opposite errors: VIBRANT made 8 false viral calls and found 22% of viral contigs; geNomad made 201 and found 33%</li>
+                </ul>
                 <div>
-                    <a href="https://www.phdplanner.com" target="_blank" class="link">
-                        &rarr; Visit phdplanner.com
-                    </a>
+                    <span class="badge">Python</span><span class="badge">Nextflow</span><span class="badge">GPU</span><span class="badge">containers</span>
                 </div>
-            </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/vaginal_virbench" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                    <a href="https://doi.org/10.64898/2026.09.24.753817" target="_blank" rel="noopener" class="link">&rarr; preprint</a>
+                </div>
+            </article>
 
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/mitch_manuscript" target="_blank" rel="noopener">* MiTCH: Multi-Omics of Bacterial Vaginosis</a></h4>
+                    <span class="tag">npj Women's Health 2026</span>
+                </div>
+                <p class="project-sub">How vaginal microbes and metabolites relate to bacterial vaginosis (co-first author)</p>
+                <ul class="bullets">
+                    <li>Integrates shotgun metagenomics and targeted LC-MS metabolomics from 111 Swedish women (29 with BV, 82 controls) using DIABLO and MOFA2</li>
+                    <li>Builds a <em>Gardnerella</em> pangenome from 61 metagenome-assembled genomes and links genes to metabolites</li>
+                    <li>Analysis code, processed data, figures and supplementary tables are public; reads on ENA (PRJEB108308)</li>
+                </ul>
+                <div>
+                    <span class="badge">R</span><span class="badge">DIABLO</span><span class="badge">MOFA2</span><span class="badge">MetaPhlAn 4</span><span class="badge">LC-MS</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/mitch_manuscript" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                    <a href="https://doi.org/10.1038/s44294-026-00163-6" target="_blank" rel="noopener" class="link">&rarr; paper</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/metaphlan4-vs-virgo2-gardnerella" target="_blank" rel="noopener">* MetaPhlAn 4 vs VIRGO2 for <em>Gardnerella</em></a></h4>
+                    <span class="tag dim">analysis</span>
+                </div>
+                <p class="project-sub">How two reference databases represent <em>Gardnerella</em> species</p>
+                <ul class="bullets">
+                    <li>MetaPhlAn 4 co-bins <em>G. piotii</em> with <em>G. pickettii</em> and <em>G. swidsinskii</em> with <em>G. leopoldii</em>; its <em>G. vaginalis</em> row sums seven GTDB species clusters</li>
+                    <li>VIRGO2 labels <em>piotii</em>, <em>swidsinskii</em> and <em>leopoldii</em> separately</li>
+                    <li>A database-content comparison, not a read-level accuracy test; reproduces in about a minute from precomputed outputs</li>
+                </ul>
+                <div>
+                    <span class="badge">Python</span><span class="badge">MetaPhlAn 4</span><span class="badge">VIRGO2</span><span class="badge">GTDB</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/metaphlan4-vs-virgo2-gardnerella" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                </div>
+            </article>
+
+            <h3 class="category-header">
+                <span class="prompt">$</span> ls ./parasite-drug-resistance/
+            </h3>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/pun-betatublin-BZ" target="_blank" rel="noopener">* <em>Parascaris</em> &beta;-Tubulin &amp; Benzimidazole Resistance</a></h4>
+                    <span class="tag dim">submitted</span>
+                </div>
+                <p class="project-sub">How &beta;-tubulin genes differ between resistant and susceptible <em>P. univalens</em></p>
+                <ul class="bullets">
+                    <li>Sequences all seven &beta;-tubulin genes as long PacBio HiFi amplicons from pooled eggs of a resistant and a susceptible farm, resolving 243 haplotypes</li>
+                    <li>Nextflow DSL2 pipeline from HiFi reads to haplotypes, variants and identity matrices (pbaa, pbmm2, FreeBayes, bcftools)</li>
+                    <li>R code regenerates every figure and table, then checks them against the numbers in the manuscript; reads on ENA (PRJEB102621)</li>
+                </ul>
+                <div>
+                    <span class="badge">Nextflow DSL2</span><span class="badge">PacBio HiFi</span><span class="badge">FreeBayes</span><span class="badge">R</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/pun-betatublin-BZ" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                    <a href="https://doi.org/10.5281/zenodo.23667831" target="_blank" rel="noopener" class="link">&rarr; Zenodo</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/Parascaris-IVM-GeneNetwork" target="_blank" rel="noopener">* Gene Co-Expression Networks in <em>P. univalens</em></a></h4>
+                    <span class="tag">PLOS ONE 2024</span>
+                </div>
+                <p class="project-sub">Tissue-specific response to ivermectin</p>
+                <ul class="bullets">
+                    <li>RNA-seq of the anterior end and intestine of 28 adult worms exposed to ivermectin <em>in vitro</em></li>
+                    <li>Consensus network from 10 inference methods in Seidr, with Leiden module detection</li>
+                    <li>Found seven modules associated with ivermectin response and 219 core genes</li>
+                </ul>
+                <div>
+                    <span class="badge">R</span><span class="badge">Seidr</span><span class="badge">Leiden</span><span class="badge">DESeq2</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/Parascaris-IVM-GeneNetwork" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                    <a href="https://doi.org/10.1371/journal.pone.0298039" target="_blank" rel="noopener" class="link">&rarr; paper</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/N2IVM" target="_blank" rel="noopener">* Ivermectin Response in <em>C. elegans</em></a></h4>
+                    <span class="tag">PLOS ONE 2023</span>
+                </div>
+                <p class="project-sub">Transcriptomics integrated with abamectin QTL</p>
+                <ul class="bullets">
+                    <li>Nextflow RNA-seq workflow: QC, rRNA removal, trimming and Salmon quantification, ready for DESeq2 or edgeR</li>
+                    <li>Manhattan plots of GWA mappings after ivermectin exposure (AndersenLab data), with a rug plot of genes implicated in resistance</li>
+                </ul>
+                <div>
+                    <span class="badge">Nextflow</span><span class="badge">Salmon</span><span class="badge">R</span><span class="badge">GWAS/QTL</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/N2IVM" target="_blank" rel="noopener" class="link">&rarr; RNA-seq pipeline</a>
+                    <a href="https://github.com/ruqse/MLgenePositions" target="_blank" rel="noopener" class="link">&rarr; mapping plots</a>
+                    <a href="https://doi.org/10.1371/journal.pone.0285262" target="_blank" rel="noopener" class="link">&rarr; paper</a>
+                </div>
+            </article>
+
+            <h3 class="category-header">
+                <span class="prompt">$</span> ls ./pipelines/
+            </h3>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/h-mel/plague" target="_blank" rel="noopener">* PLAGUE</a></h4>
+                    <span class="tag dim">Nextflow DSL2</span>
+                </div>
+                <p class="project-sub">PLasmid Assembly Genetic Unit Evaluator: recovers and validates plasmids from assembled bacterial genomes</p>
+                <ul class="bullets">
+                    <li>Reconstructs and types plasmids with MOB-suite; screens for antimicrobial-resistance genes with Abricate</li>
+                    <li>Validates candidates with circularisation checks and, when reads are supplied, coverage and plasmid copy-number estimates</li>
+                </ul>
+                <div>
+                    <span class="badge">Nextflow</span><span class="badge">MOB-suite</span><span class="badge">Abricate</span><span class="badge">Singularity/Docker</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/h-mel/plague" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/StagNF" target="_blank" rel="noopener">* StagNF</a></h4>
+                    <span class="tag dim">in development</span>
+                </div>
+                <p class="project-sub">A Nextflow reimplementation of part of the StaG-mwc metagenomics workflow</p>
+                <ul class="bullets">
+                    <li>Quality control (fastp), host removal (Bowtie2), taxonomic profiling (MetaPhlAn) and a MultiQC report</li>
+                    <li>Profiles for UPPMAX, generic SLURM and SGE clusters</li>
+                </ul>
+                <div>
+                    <span class="badge">Nextflow</span><span class="badge">MetaPhlAn</span><span class="badge">HPC</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/StagNF" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                </div>
+            </article>
+
+            <h3 class="category-header">
+                <span class="prompt">$</span> ls ./tools-and-web-apps/
+            </h3>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://phdplanner.com" target="_blank" rel="noopener">* PhDplanner</a></h4>
+                    <span class="tag">live</span>
+                </div>
+                <p class="project-sub">A free toolkit for doctoral students in Sweden</p>
+                <ul class="bullets">
+                    <li><strong>Courses360</strong>: searchable index of 1,000+ doctoral courses from over half of Sweden's universities</li>
+                    <li><strong>Defence Planner</strong>: turns a defence date into a milestone timeline with email reminders</li>
+                    <li><strong>LinkedPapers</strong>: maps how publications connect through citations and semantic similarity from one DOI</li>
+                    <li><strong>Sciframe</strong>: scientific figure editor (below)</li>
+                </ul>
+                <div>
+                    <span class="badge">Web App</span>
+                </div>
+                <div class="links">
+                    <a href="https://phdplanner.com" target="_blank" rel="noopener" class="link">&rarr; phdplanner.com</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://sciframe.phdplanner.com/" target="_blank" rel="noopener">* Sciframe</a></h4>
+                    <span class="tag">live</span>
+                </div>
+                <p class="project-sub">A free browser editor for scientific figures, slides, posters and graphical abstracts</p>
+                <ul class="bullets">
+                    <li>Built from 32,000+ open-licensed illustrations, PDB protein structures and PubChem molecules</li>
+                    <li>Runs in the browser with no installation; part of the PhDplanner toolkit</li>
+                </ul>
+                <div>
+                    <span class="badge">Web App</span><span class="badge">PDB</span><span class="badge">PubChem</span>
+                </div>
+                <div class="links">
+                    <a href="https://sciframe.phdplanner.com/" target="_blank" rel="noopener" class="link">&rarr; open Sciframe</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/c-elegans-atlas" target="_blank" rel="noopener">* <em>C. elegans</em> Atlas</a></h4>
+                    <span class="tag">live</span>
+                </div>
+                <p class="project-sub">An interactive 3D explorer of <em>C. elegans</em> anatomy</p>
+                <ul class="bullets">
+                    <li>Two views: whole body (Virtual Worm / OpenWorm) and neural EM (NeuroSC meshes)</li>
+                    <li>Search structures, then inspect, focus or isolate them; spread anatomy apart to see it clearly</li>
+                </ul>
+                <div>
+                    <span class="badge">JavaScript</span><span class="badge">WebGL</span><span class="badge">Vite</span>
+                </div>
+                <div class="links">
+                    <a href="https://c-elegans-atlas.vercel.app/" target="_blank" rel="noopener" class="link">&rarr; explore the atlas</a>
+                    <a href="https://github.com/ruqse/c-elegans-atlas" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-head">
+                    <h4 class="project-title"><a href="https://github.com/ruqse/hpc-digest" target="_blank" rel="noopener">* hpc-digest</a></h4>
+                    <span class="tag dim">MIT</span>
+                </div>
+                <p class="project-sub">Weekly Slack digests of a research group's compute and storage use on an HPC cluster</p>
+                <ul class="bullets">
+                    <li>Compute: month-to-date core-hours per user per Slurm account, used vs allocated, and whether usage is ahead of the month's pace</li>
+                    <li>Storage: CephFS quota gauges for files and bytes per project, plus who holds the files and who holds the bytes</li>
+                    <li>Runs as self-resubmitting Slurm jobs and needs no admin rights</li>
+                </ul>
+                <div>
+                    <span class="badge">Python</span><span class="badge">Slurm</span><span class="badge">CephFS</span><span class="badge">Slack API</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/ruqse/hpc-digest" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                </div>
+            </article>
         </section>
 
         <section id="publications">
-            <div class="section-title">
-                <span class="prompt">$</span> grep -r "Dube F" ~/publications/
-            </div>
-            <div class="output">
-                <div class="pub-entry">
-                    <span class="badge">2025</span> Adero J, ..., <strong>Dube F</strong>, et al. Virus-Specific Defense Responses in Sweetpotato. <em>Biology</em>, 14(11):1541.
-                    <a href="https://doi.org/10.3390/biology14111541" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2024</span> <strong>Dube F</strong> et al. Gene co-expression network analysis in <em>P. univalens</em> following ivermectin exposure. <em>PLoS One</em>, 19(2):e0298039.
-                    <a href="https://doi.org/10.1371/journal.pone.0298039" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2023</span> Valeckova E, ..., <strong>Dube F</strong>, et al. Intestinal colonization with <em>C. jejuni</em> affects broiler gut microbiota. <em>Front Microbiol</em>, 14:1205797.
-                    <a href="https://doi.org/10.3389/fmicb.2023.1205797" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2023</span> <strong>Dube F</strong> et al. Transcriptomics of ivermectin response in <em>C. elegans</em>: integrative QTL mapping. <em>PLoS One</em>, 18(5):e0285262.
-                    <a href="https://doi.org/10.1371/journal.pone.0285262" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2022</span> <strong>Dube F</strong> et al. Ivermectin-induced gene expression changes in <em>P. univalens</em> and <em>C. elegans</em>. <em>Parasit Vectors</em>, 15(1):158.
-                    <a href="https://doi.org/10.1186/s13071-022-05260-4" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2021</span> <strong>Dube F</strong> et al. Benzylpenicillin-producing <em>T. erinacei</em> and MRSA on European hedgehogs. <em>BMC Microbiol</em>, 21(1):212.
-                    <a href="https://doi.org/10.1186/s12866-021-02260-9" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry">
-                    <span class="badge">2020</span> Martin F, <strong>Dube F</strong>, et al. Transcriptional responses in <em>P. univalens</em> after anthelminthic exposure. <em>Parasit Vectors</em>, 13(1):342.
-                    <a href="https://doi.org/10.1186/s13071-020-04212-0" target="_blank" class="link">&rarr; DOI</a>
-                </div>
-                <div class="pub-entry" style="margin-top: 1.5rem;">
-                    <span class="comment"># +3 manuscripts in preparation</span>
-                </div>
-            </div>
+            <h2 class="section-title">
+                <span class="prompt">$</span> grep -r "Dube F" ~/publications/ | sort -r
+            </h2>
+            <ol class="output">
+                <li class="pub-entry">
+                    <span class="pub-year">2026</span>
+                    <div>
+                        <strong>Dube F</strong>, Happel A-U, Jaspan HB, Warchavchik Hugerth L.
+                        <span class="pub-title">Benchmarking virus identification tools on vaginal metagenomes.</span>
+                        <span class="pub-venue"><em>bioRxiv</em> (preprint)</span> <span class="tag dim">first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.64898/2026.09.24.753817" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                            <a href="https://github.com/ruqse/vaginal_virbench" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2026</span>
+                    <div>
+                        Tyd&eacute;n E, Martin F, <strong>Dube F</strong>.
+                        <span class="pub-title">Novel &beta;-tubulin mutations and haplotype restructuring associated with benzimidazole resistance in <em>Parascaris univalens</em>.</span>
+                        <span class="pub-venue"><em>PLOS ONE</em> (submitted)</span>
+                        <div class="links">
+                            <a href="https://github.com/ruqse/pun-betatublin-BZ" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2026</span>
+                    <div>
+                        Shabana H*, <strong>Dube F*</strong>, et al.
+                        <span class="pub-title">Multi-omics investigation of metabolomic and microbial features in bacterial vaginosis.</span>
+                        <span class="pub-venue"><em>npj Women's Health</em> 4:26</span> <span class="tag dim">*co-first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1038/s44294-026-00163-6" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                            <a href="https://github.com/ruqse/mitch_manuscript" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2025</span>
+                    <div>
+                        Adero J, ..., <strong>Dube F</strong>, et al.
+                        <span class="pub-title">Virus-specific defense responses in sweetpotato: transcriptomic insights into resistance and susceptibility to SPFMV, SPCSV, and SPVD.</span>
+                        <span class="pub-venue"><em>Biology</em> 14(11):1541</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.3390/biology14111541" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2024</span>
+                    <div>
+                        <strong>Dube F</strong>, Delhomme N, et al.
+                        <span class="pub-title">Gene co-expression network analysis reveal core responsive genes in <em>Parascaris univalens</em> tissues following ivermectin exposure.</span>
+                        <span class="pub-venue"><em>PLOS ONE</em> 19(2):e0298039</span> <span class="tag dim">first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1371/journal.pone.0298039" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                            <a href="https://github.com/ruqse/Parascaris-IVM-GeneNetwork" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2023</span>
+                    <div>
+                        Vale&ccaron;kov&aacute; E, ..., <strong>Dube F</strong>, et al.
+                        <span class="pub-title">Intestinal colonization with <em>Campylobacter jejuni</em> affects broiler gut microbiota composition but is not inhibited by daily intake of <em>Lactiplantibacillus plantarum</em>.</span>
+                        <span class="pub-venue"><em>Front Microbiol</em> 14:1205797</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.3389/fmicb.2023.1205797" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2023</span>
+                    <div>
+                        <strong>Dube F</strong>, Hinas A, et al.
+                        <span class="pub-title">Transcriptomics of ivermectin response in <em>Caenorhabditis elegans</em>: integrating abamectin quantitative trait loci and comparison to the ivermectin-exposed DA1316 strain.</span>
+                        <span class="pub-venue"><em>PLOS ONE</em> 18(5):e0285262</span> <span class="tag dim">first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1371/journal.pone.0285262" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                            <a href="https://github.com/ruqse/N2IVM" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2022</span>
+                    <div>
+                        <strong>Dube F</strong>, Hinas A, et al.
+                        <span class="pub-title">Ivermectin-induced gene expression changes in adult <em>Parascaris univalens</em> and <em>Caenorhabditis elegans</em>: a comparative approach to study anthelminthic metabolism and resistance <em>in vitro</em>.</span>
+                        <span class="pub-venue"><em>Parasit Vectors</em> 15(1):158</span> <span class="tag dim">first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1186/s13071-022-05260-4" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2021</span>
+                    <div>
+                        <strong>Dube F</strong>, S&ouml;derlund R, et al.
+                        <span class="pub-title">Benzylpenicillin-producing <em>Trichophyton erinacei</em> and methicillin resistant <em>Staphylococcus aureus</em> carrying the <em>mecC</em> gene on European hedgehogs &ndash; a pilot-study.</span>
+                        <span class="pub-venue"><em>BMC Microbiol</em> 21(1):212</span> <span class="tag dim">first author</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1186/s12866-021-02260-9" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
+                    <span class="pub-year">2020</span>
+                    <div>
+                        Martin F, <strong>Dube F</strong>, et al.
+                        <span class="pub-title">Transcriptional responses in <em>Parascaris univalens</em> after <em>in vitro</em> exposure to ivermectin, pyrantel citrate and thiabendazole.</span>
+                        <span class="pub-venue"><em>Parasit Vectors</em> 13(1):342</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.1186/s13071-020-04212-0" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                        </div>
+                    </div>
+                </li>
+            </ol>
         </section>
 
         <section id="contact">
-            <div class="section-title">
+            <h2 class="section-title">
                 <span class="prompt">$</span> cat contact_info.txt
+            </h2>
+            <div class="contact-item">
+                <span class="contact-key">email</span><a href="mailto:farukmeddie@gmail.com" class="link">farukmeddie@gmail.com</a>
             </div>
-            <div class="contact-list">
-                <div class="contact-item">
-                    &rarr; Email: <a href="mailto:farukmeddie@gmail.com" class="link">farukmeddie@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    &rarr; GitHub: <a href="https://github.com/ruqse" target="_blank" class="link">github.com/ruqse</a>
-                </div>
-                <div class="contact-item">
-                    &rarr; LinkedIn: <a href="https://www.linkedin.com/in/farukdube" target="_blank" class="link">linkedin.com/in/farukdube</a>
-                </div>
-                <div class="contact-item">
-                    &rarr; Instagram: <a href="https://instagram.com/farukdube" target="_blank" class="link">instagram.com/farukdube</a>
-                </div>
+            <div class="contact-item">
+                <span class="contact-key">github</span><a href="https://github.com/ruqse" target="_blank" rel="noopener" class="link">github.com/ruqse</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-key">linkedin</span><a href="https://www.linkedin.com/in/farukdube" target="_blank" rel="noopener" class="link">linkedin.com/in/farukdube</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-key">instagram</span><a href="https://instagram.com/farukdube" target="_blank" rel="noopener" class="link">instagram.com/farukdube</a>
             </div>
             <div class="output" style="margin-top: 2rem;">
-                <div class="comment">
-                    # Open to: Research collaborations &middot; Consulting opportunities &middot; Interesting problems
-                </div>
+                <p class="comment"># Open to: research collaborations &middot; consulting &middot; microbiomes, reproducible workflows and research tools</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <div>
-            <span class="prompt">$</span> echo "&copy; 2026 Faruk Dube"<span class="cursor"></span>
-        </div>
+        <p><span class="prompt">$</span> echo "&copy; 2026 Faruk Dube"<span class="cursor"></span></p>
+        <p><time datetime="2026-10-27">last updated 2026-10-27</time></p>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
         // Terminal easter egg
         let sequence = [];
         const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
