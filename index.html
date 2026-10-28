@@ -580,7 +580,7 @@
             <div class="stats" aria-label="Publication record">
                 <div class="stat"><div class="stat-num">8</div><div class="stat-label">peer-reviewed papers</div></div>
                 <div class="stat"><div class="stat-num">5</div><div class="stat-label">first or co-first author</div></div>
-                <div class="stat"><div class="stat-num">1</div><div class="stat-label">preprint (bioRxiv 2026)</div></div>
+                <div class="stat"><div class="stat-num">2</div><div class="stat-label">preprints (bioRxiv 2026)</div></div>
                 <div class="stat"><div class="stat-num">1</div><div class="stat-label">submitted (PLOS ONE)</div></div>
             </div>
         </section>
@@ -609,6 +609,10 @@
                 <li>
                     <time datetime="2026-08-27">2026-08-27</time>
                     <span><span class="kind">paper:</span> Multi-omics of bacterial vaginosis (co-first author), <a href="https://doi.org/10.1038/s44294-026-00163-6" target="_blank" rel="noopener" class="link"><em>npj Women's Health</em></a></span>
+                </li>
+                <li>
+                    <time datetime="2026-07-10">2026-07-10</time>
+                    <span><span class="kind">preprint:</span> PLAGUE, improved-confidence plasmid reconstruction from short-read assemblies, <a href="https://doi.org/10.64898/2026.07.10.737741" target="_blank" rel="noopener" class="link">bioRxiv</a></span>
                 </li>
                 <li>
                     <time datetime="2026-06-08">2026-06-08</time>
@@ -839,18 +843,20 @@
             <article class="project">
                 <div class="project-head">
                     <h4 class="project-title"><a href="https://github.com/h-mel/plague" target="_blank" rel="noopener">* PLAGUE</a></h4>
-                    <span class="tag dim">Nextflow DSL2</span>
+                    <span class="tag">bioRxiv 2026</span>
                 </div>
-                <p class="project-sub">PLasmid Assembly Genetic Unit Evaluator: recovers and validates plasmids from assembled bacterial genomes</p>
+                <p class="project-sub">PLasmid Assembly Genetic Unit Evaluator: improved-confidence plasmid reconstruction from short-read assemblies</p>
                 <ul class="bullets">
-                    <li>Reconstructs and types plasmids with MOB-suite; screens for antimicrobial-resistance genes with Abricate</li>
-                    <li>Validates candidates with circularisation checks and, when reads are supplied, coverage and plasmid copy-number estimates</li>
+                    <li>Post-processes MOB-suite output to cut false-positive plasmid calls from fragmented, low-coverage assemblies</li>
+                    <li>Checks circularity, reads spanning a candidate's two ends, and total coverage; optional plasmid copy-number estimates</li>
+                    <li>Screens plasmids for antimicrobial-resistance genes with Abricate</li>
                 </ul>
                 <div>
-                    <span class="badge">Nextflow</span><span class="badge">MOB-suite</span><span class="badge">Abricate</span><span class="badge">Singularity/Docker</span>
+                    <span class="badge">Nextflow DSL2</span><span class="badge">MOB-suite</span><span class="badge">Abricate</span><span class="badge">Singularity/Docker</span>
                 </div>
                 <div class="links">
                     <a href="https://github.com/h-mel/plague" target="_blank" rel="noopener" class="link">&rarr; repo</a>
+                    <a href="https://doi.org/10.64898/2026.07.10.737741" target="_blank" rel="noopener" class="link">&rarr; preprint</a>
                 </div>
             </article>
 
@@ -994,6 +1000,18 @@
                     </div>
                 </li>
                 <li class="pub-entry">
+                    <span class="pub-year">2026</span>
+                    <div>
+                        Kozubal K, <strong>Dube F</strong>, et al.
+                        <span class="pub-title">PLAGUE: Improved confidence plasmid reconstruction from short read assemblies.</span>
+                        <span class="pub-venue"><em>bioRxiv</em> (preprint)</span>
+                        <div class="links">
+                            <a href="https://doi.org/10.64898/2026.07.10.737741" target="_blank" rel="noopener" class="link">&rarr; DOI</a>
+                            <a href="https://github.com/h-mel/plague" target="_blank" rel="noopener" class="link">&rarr; code</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-entry">
                     <span class="pub-year">2025</span>
                     <div>
                         Adero J, ..., <strong>Dube F</strong>, et al.
@@ -1099,7 +1117,7 @@
 
     <footer>
         <p><span class="prompt">$</span> echo "&copy; 2026 Faruk Dube"<span class="cursor"></span></p>
-        <p><time datetime="2026-10-27">last updated 2026-10-27</time></p>
+        <p><time datetime="2026-10-28">last updated 2026-10-28</time></p>
     </footer>
 
     <script>
